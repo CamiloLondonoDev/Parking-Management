@@ -62,7 +62,7 @@ h1 {
     border-color: #2f6fed;
 }
 
-/* BOTONES */
+/* BUTTONS */
 
 .btn-primary {
     background: #2f6fed;
@@ -159,7 +159,7 @@ h1 {
     color: white;
 }
 
-/* TABLA */
+/* TABLE */
 
 .table-card {
     background: white;
@@ -198,7 +198,7 @@ tr:hover td {
     background: #f9fafb;
 }
 
-.badge-activo {
+.badge-active {
     background: #d1fae5;
     color: #065f46;
     padding: 4px 10px;
@@ -207,7 +207,7 @@ tr:hover td {
     font-weight: 500;
 }
 
-.badge-inactivo {
+.badge-inactive {
     background: #f3f4f6;
     color: #6b7280;
     padding: 4px 10px;
@@ -224,7 +224,7 @@ tr:hover td {
     font-size: 12px;
 }
 
-.badge-operario {
+.badge-operator {
     background: #e8f0ff;
     color: #1d4ed8;
     padding: 4px 10px;
@@ -232,14 +232,14 @@ tr:hover td {
     font-size: 12px;
 }
 
-.sin-resultados {
+.no-results {
     text-align: center;
     padding: 40px;
     color: #9ca3af;
     font-size: 14px;
 }
 
-/* FORMULARIO */
+/* FORM */
 
 .card {
     background: white;

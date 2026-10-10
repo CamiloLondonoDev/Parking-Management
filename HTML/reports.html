@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Autos Colombia</title>
+    <link rel="stylesheet" href="../CSS/sidebar.css">
+    <link rel="stylesheet" href="../CSS/reports.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🚗 Autos Colombia
+            <p>Parking System</p>
+        </div>
+
+        <nav class="menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="entry.html">Register Entry</a>
+            <a href="registerexit.html">Register Exit</a>
+            <a href="spaces.html">Spaces</a>
+            <a href="payments.html">Payments</a>
+            <a class="active" href="reports.html">Reports</a>
+            <a href="users.html">Users</a>
+        </nav>
+
+        <div class="user" id="sidebarUser" onclick="openUserModal()">
+            <strong id="sidebarName">Loading...</strong>
+            <p id="sidebarEmail"></p>
+            <p class="user-role" id="sidebarRole"></p>
+        </div>
+
+    </aside>
+
+    <!-- USER MODAL -->
+    <div id="userModal" class="user-modal-overlay">
+        <div class="user-modal">
+            <div class="user-modal-header">
+                <div class="modal-avatar" id="modalAvatar"></div>
+                <div>
+                    <p class="user-modal-name" id="modalName"></p>
+                    <p class="user-modal-role" id="modalRole"></p>
+                </div>
+            </div>
+            <div class="user-modal-fields">
+                <div class="user-modal-field">
+                    <span class="user-modal-label">Email</span>
+                    <span class="user-modal-value" id="modalEmail"></span>
+                </div>
+                <div class="user-modal-field">
+                    <span class="user-modal-label">Phone</span>
+                    <span class="user-modal-value" id="modalPhone"></span>
+                </div>
+                <div class="user-modal-field">
+                    <span class="user-modal-label">Document</span>
+                    <span class="user-modal-value" id="modalDocument"></span>
+                </div>
+            </div>
+            <div class="user-modal-buttons">
+                <button class="btn-close-modal" onclick="closeUserModal()">Close</button>
+                <button class="btn-logout" onclick="logout()">Log out</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- CONTENT -->
+    <main class="main">
+
+        <h1>Reports and Statistics</h1>
+        <p class="subtitle">Detailed analysis of the parking lot's performance</p>
+
+        <!-- FILTERS -->
+        <div class="filters">
+            <div>
+                <label>Report Type</label>
+                <select id="reportType" onchange="applyFilters()">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </div>
+            <div>
+                <label>Date From</label>
+                <input type="date" id="dateFrom" onchange="applyFilters()">
+            </div>
+            <div>
+                <label>Date To</label>
+                <input type="date" id="dateTo" onchange="applyFilters()">
+            </div>
+            <!-- <button class="export" onclick="exportPDF()">⬇ Export PDF</button> -->
+        </div>
+
+        <!-- CARDS -->
+        <div class="cards">
+            <div class="card income">
+                <p>Total Income</p>
+                <h2 id="cardIncome">$0</h2>
+                <span class="green" id="cardIncomeComp"></span>
+            </div>
+            <div class="card vehicles">
+                <p>Total Vehicles</p>
+                <h2 id="cardVehicles">0</h2>
+                <span class="green" id="cardVehiclesComp"></span>
+            </div>
+            <div class="card average">
+                <p>Daily Average</p>
+                <h2 id="cardAverage">0</h2>
+                <span>vehicles/day</span>
+            </div>
+        </div>
+
+        <!-- CHARTS -->
+        <div class="charts">
+            <div class="chart">
+                <h3>Daily Income</h3>
+                <canvas id="incomeChart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Vehicles per Day</h3>
+                <canvas id="vehiclesChart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Distribution by Vehicle Type</h3>
+                <canvas id="typeChart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Occupancy by Hour</h3>
+                <canvas id="hourChart"></canvas>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../JS/sidebar.js"></script>
+    <script src="../JS/reports.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Entry - Autos Colombia</title>
+    <link rel="stylesheet" href="../CSS/sidebar.css">
+    <link rel="stylesheet" href="../CSS/entry.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                🚗 Autos Colombia
+                <p>Parking System</p>
+            </div>
+
+            <nav class="menu">
+                <a href="dashboard.html">Dashboard</a>
+                <a class="active" href="entry.html">Register Entry</a>
+                <a href="registerexit.html">Register Exit</a>
+                <a href="spaces.html">Spaces</a>
+                <a href="payments.html">Payments</a>
+                <a href="reports.html">Reports</a>
+                <a href="users.html">Users</a>
+            </nav>
+
+            <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer">
+                <strong id="sidebarName">Loading...</strong>
+                <p id="sidebarEmail"></p>
+                <p id="sidebarRole" style="font-size:11px;color:#5a7ab5;margin-top:2px"></p>
+            </div>
+
+            <!-- USER MODAL -->
+            <div id="userModal" class="user-modal-overlay">
+                <div class="user-modal">
+                    <div class="user-modal-header">
+                        <div class="modal-avatar" id="modalAvatar"></div>
+                        <div>
+                            <p class="user-modal-name" id="modalName"></p>
+                            <p class="user-modal-role" id="modalRole"></p>
+                        </div>
+                    </div>
+                    <div class="user-modal-fields">
+                        <div class="user-modal-field">
+                            <span class="user-modal-label">Email</span>
+                            <span class="user-modal-value" id="modalEmail"></span>
+                        </div>
+                        <div class="user-modal-field">
+                            <span class="user-modal-label">Phone</span>
+                            <span class="user-modal-value" id="modalPhone"></span>
+                        </div>
+                        <div class="user-modal-field">
+                            <span class="user-modal-label">Document</span>
+                            <span class="user-modal-value" id="modalDocument"></span>
+                        </div>
+                    </div>
+                    <div class="user-modal-buttons">
+                        <button class="btn-close-modal" onclick="closeUserModal()">Close</button>
+                        <button class="btn-logout" onclick="logout()">Log out</button>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+        <main class="main">
+
+            <h1>Entry Registration</h1>
+            <p class="subtitle">Enter the details of the vehicle entering the parking lot</p>
+
+            <div class="card">
+
+                <form id="entryForm">
+
+                    <div class="grid">
+
+                        <div id="monthlyNotice" class="monthly-notice" style="display:none; grid-column: 1 / -1;"></div>
+
+                        <div class="form-group">
+                            <label>Vehicle Plate *</label>
+                            <input type="text" id="plate" placeholder="ABC-123" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Vehicle Type *</label>
+                            <select id="type" onchange="updateSpots()">
+                                <option value="Car">Car</option>
+                                <option value="Motorcycle">Motorcycle</option>
+                                <option value="Pickup">Pickup</option>
+                                <option value="Van">Van</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Owner Name</label>
+                            <input type="text" id="owner" placeholder="John Smith">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Contact Phone</label>
+                            <input type="text" id="phone" placeholder="300 123 4567">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Parking Space *</label>
+                            <select id="space">
+                                <option value="">Loading spaces...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Modality *</label>
+                            <select id="modality">
+                                <option value="hour">Hourly</option>
+                                <option value="day">Daily</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Entry Date</label>
+                            <input type="date" id="date">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Entry Time</label>
+                            <input type="time" id="time">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Notes</label>
+                        <textarea id="notes" placeholder="Additional notes about the vehicle..."></textarea>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="button" class="btn cancel" onclick="window.location.href='dashboard.html'">Cancel</button>
+                        <button type="submit" class="btn primary">Register Entry</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="rates">
+                <h3>Rate Information</h3>
+                <ul>
+                    <li>Car / Pickup: $3,000/hour — $25,000/day — $80,000/month</li>
+                    <li>Motorcycle: $2,000/hour — $15,000/day — $70,000/month</li>
+                    <li>Van: $4,000/hour — $30,000/day — $100,000/month</li>
+                </ul>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="../JS/sidebar.js"></script>
+    <script src="../JS/entry.js"></script>
+
+</body>
+</html>

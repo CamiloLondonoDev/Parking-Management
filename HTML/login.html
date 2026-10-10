@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Login - Autos Colombia</title>
 
-<!-- ruta al CSS -->
+<!-- path to the CSS -->
 <link rel="stylesheet" href="../CSS/login.css">
 
 </head>
@@ -14,29 +14,29 @@
 <div class="login-container">
 
     <h2>Autos Colombia</h2>
-    <p>Inicio de sesión</p>
+    <p>Sign in</p>
 
     <form id="loginForm" data-testid="login-form">
 
         <div class="input-group">
-            <label>Usuario</label>
-            <input type="text" id="usuario" data-testid="login-username-input" placeholder="Usuario válido: admin">
+            <label>Username</label>
+            <input type="text" id="username" data-testid="login-username-input" placeholder="Valid username: admin">
         </div>
 
         <div class="input-group">
-            <label>Contraseña</label>
-            <input type="password" id="password" data-testid="login-password-input" placeholder="Contraseña válida: 12345">
+            <label>Password</label>
+            <input type="password" id="password" data-testid="login-password-input" placeholder="Valid password: 12345">
         </div>
 
-        <button type="submit" class="btn-login" data-testid="login-submit-button">Iniciar Sesión</button>
+        <button type="submit" class="btn-login" data-testid="login-submit-button">Sign In</button>
 
-        <p id="mensajeError" class="error" data-testid="login-error-message"></p>
+        <p id="errorMessage" class="error" data-testid="login-error-message"></p>
 
     </form>
 
 </div>
 
-<!-- ruta al JS -->
+<!-- path to the JS -->
 <script src="../JS/login.js"></script>
 
 </body>

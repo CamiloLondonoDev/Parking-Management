@@ -1,183 +1,183 @@
-// ─── CLAVES localStorage ──────────────────────────────────────────────────────
+// ─── localStorage KEYS ────────────────────────────────────────────────────────
 
-const CELDAS_KEY    = 'celdas_db';
-const ENTRADAS_KEY  = 'registros_entrada';
-const RECIENTES_KEY = 'vehiculos_recientes';
-const SALIDAS_KEY   = 'registros_salida';
-const PAGOS_MENS_KEY = 'pagos_db';
+const SPOTS_KEY         = 'spots_db';
+const ENTRIES_KEY       = 'entry_records';
+const RECENT_KEY        = 'recent_vehicles';
+const EXITS_KEY         = 'exit_records';
+const SUBSCRIPTIONS_KEY = 'payments_db';
 
 
-// ─── UTILIDADES DE FECHA Y HORA LOCAL ─────────────────────────────────────────
+// ─── LOCAL DATE AND TIME UTILITIES ────────────────────────────────────────────
 
-function fechaLocalISO(d) {
+function localDateISO(d) {
     const yy = d.getFullYear();
     const mm = String(d.getMonth() + 1).padStart(2, '0');
     const dd = String(d.getDate()).padStart(2, '0');
     return `${yy}-${mm}-${dd}`;
 }
 
-function horaLocalHHMM(d) {
+function localTimeHHMM(d) {
     const hh = String(d.getHours()).padStart(2, '0');
     const mi = String(d.getMinutes()).padStart(2, '0');
     return `${hh}:${mi}`;
 }
 
-function formatearMostrar(fechaISO, horaHHMM) {
-    const [yy, mm, dd] = fechaISO.split('-');
-    const [hh, mi] = horaHHMM.split(':');
+function formatDisplay(dateISO, timeHHMM) {
+    const [yy, mm, dd] = dateISO.split('-');
+    const [hh, mi] = timeHHMM.split(':');
     const h    = parseInt(hh);
     const ampm = h >= 12 ? 'pm' : 'am';
     const h12  = h % 12 || 12;
     return `${dd}/${mm}/${yy} ${h12}:${mi}${ampm}`;
 }
 
-function formatearPesos(valor) {
-    return '$' + valor.toLocaleString('es-CO');
+function formatCurrency(value) {
+    return '$' + value.toLocaleString('es-CO');
 }
 
 
-// ─── CARDS RESUMEN ────────────────────────────────────────────────────────────
+// ─── SUMMARY CARDS ────────────────────────────────────────────────────────────
 
-function actualizarCards() {
-    const celdas  = JSON.parse(localStorage.getItem(CELDAS_KEY)  || '[]');
-    const entradas = JSON.parse(localStorage.getItem(ENTRADAS_KEY) || '[]');
-    const salidas  = JSON.parse(localStorage.getItem(SALIDAS_KEY)  || '[]');
+function updateCards() {
+    const spots   = JSON.parse(localStorage.getItem(SPOTS_KEY)   || '[]');
+    const entries = JSON.parse(localStorage.getItem(ENTRIES_KEY) || '[]');
+    const exits   = JSON.parse(localStorage.getItem(EXITS_KEY)   || '[]');
 
-    const ocupados = celdas.filter(c => c.estado === 'ocupado').length;
-    const total    = celdas.length;
-    const hoy      = fechaLocalISO(new Date());
+    const occupied = spots.filter(c => c.status === 'occupied').length;
+    const total    = spots.length;
+    const today    = localDateISO(new Date());
 
-    const vehiculosHoy = entradas.filter(r => r.fecha === hoy).length;
+    const vehiclesToday = entries.filter(r => r.date === today).length;
 
-    const ingresosHoy = salidas
-        .filter(r => r.fechaSalida === hoy)
-        .reduce((acc, r) => acc + (r.totalCobrado || 0), 0);
+    const earningsToday = exits
+        .filter(r => r.exitDate === today)
+        .reduce((acc, r) => acc + (r.totalCharged || 0), 0);
 
-    const cardEspacios = document.querySelector('.card:nth-child(1) .big');
-    if (cardEspacios) cardEspacios.textContent = `${ocupados}/${total}`;
+    const spacesCard = document.querySelector('.card:nth-child(1) .big');
+    if (spacesCard) spacesCard.textContent = `${occupied}/${total}`;
 
     const fill = document.querySelector('.fill');
     if (fill && total > 0) {
-        fill.style.width = Math.round((ocupados / total) * 100) + '%';
+        fill.style.width = Math.round((occupied / total) * 100) + '%';
     }
 
-    const cardVehiculos = document.querySelector('.card:nth-child(2) .big');
-    if (cardVehiculos) cardVehiculos.textContent = vehiculosHoy;
+    const vehiclesCard = document.querySelector('.card:nth-child(2) .big');
+    if (vehiclesCard) vehiclesCard.textContent = vehiclesToday;
 
-    const cardIngresos = document.querySelector('.card:nth-child(3) .big');
-    if (cardIngresos) cardIngresos.textContent = formatearPesos(ingresosHoy);
+    const earningsCard = document.querySelector('.card:nth-child(3) .big');
+    if (earningsCard) earningsCard.textContent = formatCurrency(earningsToday);
 }
 
 
-// ─── ALERTAS (mantenimiento + mensualidades vencidas/próximas) ────────────────
+// ─── ALERTS (maintenance + expired/upcoming subscriptions) ────────────────────
 
-function actualizarAlertas() {
-    const celdas  = JSON.parse(localStorage.getItem(CELDAS_KEY) || '[]');
-    const mensualidades = JSON.parse(localStorage.getItem(PAGOS_MENS_KEY) || '[]');
-    const lista   = document.getElementById('listaAlertas');
-    if (!lista) return;
+function updateAlerts() {
+    const spots         = JSON.parse(localStorage.getItem(SPOTS_KEY) || '[]');
+    const subscriptions = JSON.parse(localStorage.getItem(SUBSCRIPTIONS_KEY) || '[]');
+    const list          = document.getElementById('alertList');
+    if (!list) return;
 
-    const alertas = [];
+    const alerts = [];
 
-    // Celdas en mantenimiento
-    celdas
-        .filter(c => c.estado === 'mantenimiento')
-        .forEach(c => alertas.push(`Celda ${c.numero} (Zona ${c.zona}) en mantenimiento`));
+    // Spots under maintenance
+    spots
+        .filter(c => c.status === 'maintenance')
+        .forEach(c => alerts.push(`Spot ${c.number} (Zone ${c.zone}) under maintenance`));
 
-    // Mensualidades vencidas y próximas a vencer (≤5 días)
-    const hoy = new Date(fechaLocalISO(new Date()) + 'T00:00:00');
-    mensualidades.forEach(m => {
-        const vence = new Date(m.fechaVencimiento + 'T00:00:00');
-        const dias  = Math.round((vence - hoy) / (1000 * 60 * 60 * 24));
-        if (dias < 0) {
-            alertas.push(`Mensualidad vencida: ${m.placa} (venció hace ${Math.abs(dias)} día${Math.abs(dias) !== 1 ? 's' : ''})`);
-        } else if (dias <= 5) {
-            alertas.push(`Mensualidad por vencer: ${m.placa} (vence en ${dias} día${dias !== 1 ? 's' : ''})`);
+    // Expired and soon-to-expire subscriptions (≤5 days)
+    const today = new Date(localDateISO(new Date()) + 'T00:00:00');
+    subscriptions.forEach(m => {
+        const expires = new Date(m.expirationDate + 'T00:00:00');
+        const days    = Math.round((expires - today) / (1000 * 60 * 60 * 24));
+        if (days < 0) {
+            alerts.push(`Subscription expired: ${m.plate} (expired ${Math.abs(days)} day${Math.abs(days) !== 1 ? 's' : ''} ago)`);
+        } else if (days <= 5) {
+            alerts.push(`Subscription expiring: ${m.plate} (expires in ${days} day${days !== 1 ? 's' : ''})`);
         }
     });
 
-    if (alertas.length === 0) {
-        lista.innerHTML = '<li>Sin alertas activas</li>';
+    if (alerts.length === 0) {
+        list.innerHTML = '<li>No active alerts</li>';
         return;
     }
 
-    lista.innerHTML = alertas.map(a => `<li>${a}</li>`).join('');
+    list.innerHTML = alerts.map(a => `<li>${a}</li>`).join('');
 }
 
 
-// ─── TABLA VEHÍCULOS RECIENTES ────────────────────────────────────────────────
+// ─── RECENT VEHICLES TABLE ────────────────────────────────────────────────────
 
-function etiquetaModalidad(modalidad) {
-    if (modalidad === 'hora')    return 'Por hora';
-    if (modalidad === 'dia')     return 'Por día';
-    if (modalidad === 'mensual') return 'Mensual';
-    return modalidad || '-';
+function modalityLabel(modality) {
+    if (modality === 'hour')    return 'Hourly';
+    if (modality === 'day')     return 'Daily';
+    if (modality === 'monthly') return 'Monthly';
+    return modality || '-';
 }
 
-function cargarRecientes() {
-    const tabla = document.getElementById('tablaVehiculos');
-    if (!tabla) return;
+function loadRecent() {
+    const table = document.getElementById('vehiclesTable');
+    if (!table) return;
 
-    const ahora  = Date.now();
-    const datos  = JSON.parse(localStorage.getItem(RECIENTES_KEY) || '[]');
-    const validos = datos.filter(r => r.expira > ahora);
+    const now   = Date.now();
+    const data  = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+    const valid = data.filter(r => r.expires > now);
 
-    localStorage.setItem(RECIENTES_KEY, JSON.stringify(validos));
-    tabla.innerHTML = '';
+    localStorage.setItem(RECENT_KEY, JSON.stringify(valid));
+    table.innerHTML = '';
 
-    if (validos.length === 0) {
+    if (valid.length === 0) {
         const tr = document.createElement('tr');
         tr.innerHTML = `<td colspan="5" style="text-align:center;color:#999;padding:20px">
-            No hay vehículos recientes (últimos 5 minutos)
+            No recent vehicles (last 5 minutes)
         </td>`;
-        tabla.appendChild(tr);
+        table.appendChild(tr);
         return;
     }
 
-    validos.forEach(r => {
-        const minutosRestantes = Math.ceil((r.expira - ahora) / 60000);
+    valid.forEach(r => {
+        const minutesLeft = Math.ceil((r.expires - now) / 60000);
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${r.placa}</td>
-            <td>${r.espacio}</td>
-            <td>${formatearMostrar(r.fecha, r.hora)}</td>
-            <td>${r.tipo}</td>
+            <td>${r.plate}</td>
+            <td>${r.space}</td>
+            <td>${formatDisplay(r.date, r.time)}</td>
+            <td>${r.type}</td>
             <td>
-                <span class="estado">${etiquetaModalidad(r.modalidad)}</span>
-                <span style="font-size:11px;color:#999;margin-left:6px">${minutosRestantes}min</span>
+                <span class="status">${modalityLabel(r.modality)}</span>
+                <span style="font-size:11px;color:#999;margin-left:6px">${minutesLeft}min</span>
             </td>
         `;
-        tabla.appendChild(tr);
+        table.appendChild(tr);
     });
 }
 
 
-// ─── BOTONES ACCIONES RÁPIDAS ─────────────────────────────────────────────────
+// ─── QUICK ACTION BUTTONS ─────────────────────────────────────────────────────
 
-function configurarBotones() {
+function setupButtons() {
     const btnBlue   = document.querySelector('.btn.blue');
     const btnOrange = document.querySelector('.btn.orange');
     const btnGreen  = document.querySelector('.btn.green');
     const btnPurple = document.querySelector('.btn.purple');
 
-    if (btnBlue)   btnBlue.onclick   = () => window.location.href = 'entrada.html';
-    if (btnOrange) btnOrange.onclick = () => window.location.href = 'registrarsalida.html';
-    if (btnGreen)  btnGreen.onclick  = () => window.location.href = 'espacios.html';
-    if (btnPurple) btnPurple.onclick = () => window.location.href = 'reportes.html';
+    if (btnBlue)   btnBlue.onclick   = () => window.location.href = 'entry.html';
+    if (btnOrange) btnOrange.onclick = () => window.location.href = 'registerexit.html';
+    if (btnGreen)  btnGreen.onclick  = () => window.location.href = 'spaces.html';
+    if (btnPurple) btnPurple.onclick = () => window.location.href = 'reports.html';
 }
 
 
-// ─── INICIO ───────────────────────────────────────────────────────────────────
+// ─── INIT ─────────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', function () {
-    actualizarCards();
-    actualizarAlertas();
-    cargarRecientes();
-    configurarBotones();
+    updateCards();
+    updateAlerts();
+    loadRecent();
+    setupButtons();
 
     setInterval(() => {
-        cargarRecientes();
-        actualizarCards();
-        actualizarAlertas();
+        loadRecent();
+        updateCards();
+        updateAlerts();
     }, 30000);
 });

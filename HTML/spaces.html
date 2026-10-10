@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Management - Autos Colombia</title>
+    <link rel="stylesheet" href="../CSS/sidebar.css">
+    <link rel="stylesheet" href="../CSS/spaces.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🚗 Autos Colombia
+            <p>Parking System</p>
+        </div>
+
+        <nav class="menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="entry.html">Register Entry</a>
+            <a href="registerexit.html">Register Exit</a>
+            <a class="active" href="spaces.html">Spaces</a>
+            <a href="payments.html">Payments</a>
+                <a href="reports.html">Reports</a>
+            <a href="users.html">Users</a>
+        </nav>
+
+        <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer">
+            <strong id="sidebarName">Loading...</strong>
+            <p id="sidebarEmail"></p>
+            <p id="sidebarRole" style="font-size:11px;color:#5a7ab5;margin-top:2px"></p>
+        </div>
+
+    </aside>
+
+    <!-- USER MODAL -->
+    <div id="userModal" class="user-modal-overlay">
+        <div class="user-modal">
+            <div class="user-modal-header">
+                <div class="modal-avatar" id="modalAvatar"></div>
+                <div>
+                    <p class="user-modal-name" id="modalName"></p>
+                    <p class="user-modal-role" id="modalRole"></p>
+                </div>
+            </div>
+            <div class="user-modal-fields">
+                <div class="user-modal-field">
+                    <span class="user-modal-label">Email</span>
+                    <span class="user-modal-value" id="modalEmail"></span>
+                </div>
+                <div class="user-modal-field">
+                    <span class="user-modal-label">Phone</span>
+                    <span class="user-modal-value" id="modalPhone"></span>
+                </div>
+                <div class="user-modal-field">
+                    <span class="user-modal-label">Document</span>
+                    <span class="user-modal-value" id="modalDocument"></span>
+                </div>
+            </div>
+            <div class="user-modal-buttons">
+                <button class="btn-close-modal" onclick="closeUserModal()">Close</button>
+                <button class="btn-logout" onclick="logout()">Log out</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- CONTENT -->
+    <main class="main">
+
+        <div class="main-header">
+            <div>
+                <h1>Space Management</h1>
+                <p class="subtitle">Real-time view of the parking spaces</p>
+            </div>
+            <button class="btn-primary" onclick="showSpotForm()">+ New Spot</button>
+        </div>
+
+
+        <!-- SUMMARY -->
+        <div class="cards">
+            <div class="card total">
+                <p>Total Spaces</p>
+                <h2 id="total">0</h2>
+            </div>
+            <div class="card available">
+                <p>Available</p>
+                <h2 id="available">0</h2>
+            </div>
+            <div class="card occupied">
+                <p>Occupied</p>
+                <h2 id="occupied">0</h2>
+            </div>
+            <div class="card maintenance">
+                <p>Maintenance</p>
+                <h2 id="maintenance">0</h2>
+            </div>
+        </div>
+
+
+        <!-- SPACES GRID -->
+        <div class="parking-container">
+
+            <div class="zone-filters">
+                <button class="filter active" onclick="filterZone('all', this)">All Zones</button>
+                <button class="filter" onclick="filterZone('A', this)">Zone A</button>
+                <button class="filter" onclick="filterZone('B', this)">Zone B</button>
+                <button class="filter" onclick="filterZone('C', this)">Zone C</button>
+                <button class="filter" onclick="filterZone('D', this)">Zone D</button>
+            </div>
+
+            <div class="parking-grid" id="parkingGrid"></div>
+
+        </div>
+
+
+        <!-- LEGEND -->
+        <div class="legend">
+            <div><span class="box available"></span> Available</div>
+            <div><span class="box occupied"></span> Occupied</div>
+            <div><span class="box maintenance"></span> Maintenance</div>
+        </div>
+
+
+        <!-- MODAL: CHANGE STATUS -->
+        <div id="statusModal" class="modal-overlay" style="display:none">
+            <div class="modal">
+                <h3>Spot <span id="modalSpotId"></span></h3>
+                <p class="modal-current-status">Current status: <span id="modalCurrentStatus"></span></p>
+
+                <div class="status-options">
+                    <button class="btn-status available" onclick="applyStatus('available')">✔ Available</button>
+                    <button class="btn-status occupied" onclick="applyStatus('occupied')">🚗 Occupied</button>
+                    <button class="btn-status maintenance" onclick="applyStatus('maintenance')">🔧 Maintenance</button>
+                </div>
+
+                <p class="modal-info">Change recorded by: <strong>Administrator</strong></p>
+
+                <div class="modal-buttons">
+                    <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL: NEW SPOT -->
+        <div id="newSpotModal" class="modal-overlay" style="display:none">
+            <div class="modal modal-form">
+                <h3>Register New Spot</h3>
+
+                <div class="form-group">
+                    <label>Identifier *</label>
+                    <input type="text" id="newId" placeholder="E.g.: D-01">
+                </div>
+
+                <div class="form-group">
+                    <label>Zone *</label>
+                    <select id="newZone">
+                        <option value="">Select a zone</option>
+                        <option value="A">Zone A</option>
+                        <option value="B">Zone B</option>
+                        <option value="C">Zone C</option>
+                        <option value="D">Zone D</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Allowed vehicle type *</label>
+                    <select id="newType">
+                        <option value="Car">Car</option>
+                        <option value="Motorcycle">Motorcycle</option>
+                        <option value="Pickup">Pickup</option>
+                        <option value="Van">Van</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Initial status</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="initialStatus" value="available" checked> Available
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="initialStatus" value="maintenance"> Under maintenance
+                        </label>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button class="btn-cancel" onclick="closeSpotModal()">Cancel</button>
+                    <button class="btn-primary" onclick="saveNewSpot()">Save Spot</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../JS/sidebar.js"></script>
+    <script src="../JS/spaces.js"></script>
+
+</body>
+</html>

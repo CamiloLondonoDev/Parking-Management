@@ -40,7 +40,7 @@ h1 {
     font-size: 14px;
 }
 
-/* BOTONES */
+/* BUTTONS */
 .btn-primary {
     background: #2f6fed;
     color: white;
@@ -72,7 +72,7 @@ h1 {
     background: #d1d5db;
 }
 
-/* CARDS RESUMEN */
+/* SUMMARY CARDS */
 .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -98,12 +98,12 @@ h1 {
     color: #1a1a2e;
 }
 
-.card.disponibles { border-left: 4px solid #16a34a; }
-.card.ocupados    { border-left: 4px solid #dc2626; }
-.card.mantenimiento { border-left: 4px solid #f59e0b; }
+.card.available { border-left: 4px solid #16a34a; }
+.card.occupied    { border-left: 4px solid #dc2626; }
+.card.maintenance { border-left: 4px solid #f59e0b; }
 .card.total       { border-left: 4px solid #2f6fed; }
 
-/* FILTROS */
+/* FILTERS */
 .parking-container {
     background: white;
     padding: 20px;
@@ -138,7 +138,7 @@ h1 {
     color: white;
 }
 
-/* GRID ESPACIOS */
+/* SPACES GRID */
 .parking-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -160,9 +160,9 @@ h1 {
     opacity: 0.9;
 }
 
-.parking-space.disponible   { background: #16a34a; }
-.parking-space.ocupado      { background: #ef4444; }
-.parking-space.mantenimiento { background: #f59e0b; }
+.parking-space.available   { background: #16a34a; }
+.parking-space.occupied      { background: #ef4444; }
+.parking-space.maintenance { background: #f59e0b; }
 
 .icon {
     font-size: 22px;
@@ -181,7 +181,7 @@ h1 {
     margin-top: 5px;
 }
 
-/* LEYENDA */
+/* LEGEND */
 .legend {
     display: flex;
     gap: 30px;
@@ -199,9 +199,9 @@ h1 {
     vertical-align: middle;
 }
 
-.box.disponible    { background: #16a34a; }
-.box.ocupado       { background: #ef4444; }
-.box.mantenimiento { background: #f59e0b; }
+.box.available    { background: #16a34a; }
+.box.occupied       { background: #ef4444; }
+.box.maintenance { background: #f59e0b; }
 
 /* MODAL BASE */
 .modal-overlay {
@@ -232,21 +232,21 @@ h1 {
     color: #1a1a2e;
 }
 
-.modal-estado-actual {
+.modal-current-status {
     font-size: 13px;
     color: #6b7280;
     margin-bottom: 20px;
 }
 
-/* OPCIONES DE ESTADO */
-.estado-opciones {
+/* STATUS OPTIONS */
+.status-options {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.btn-estado {
+.btn-status {
     padding: 12px;
     border: none;
     border-radius: 8px;
@@ -258,12 +258,12 @@ h1 {
     text-align: left;
 }
 
-.btn-estado:hover { opacity: 0.85; }
-.btn-estado.disponible    { background: #16a34a; }
-.btn-estado.ocupado       { background: #ef4444; }
-.btn-estado.mantenimiento { background: #f59e0b; }
+.btn-status:hover { opacity: 0.85; }
+.btn-status.available    { background: #16a34a; }
+.btn-status.occupied       { background: #ef4444; }
+.btn-status.maintenance { background: #f59e0b; }
 
-.btn-estado.seleccionado {
+.btn-status.selected {
     outline: 3px solid #1a1a2e;
     outline-offset: 2px;
 }
@@ -280,7 +280,7 @@ h1 {
     gap: 10px;
 }
 
-/* MODAL FORMULARIO NUEVA CELDA */
+/* NEW SPOT FORM MODAL */
 .modal-form {
     max-width: 440px;
 }

@@ -59,9 +59,9 @@ h1 {
     font-weight: 500;
 }
 
-/* ── NOTA INFORMATIVA ─────────────────────────────────────────────────────── */
+/* ── INFO NOTE ─────────────────────────────────────────────────────── */
 
-.info-nota {
+.info-note {
     background: #eff6ff;
     border: 1px solid #bfdbfe;
     border-radius: 8px;
@@ -72,9 +72,9 @@ h1 {
     line-height: 1.5;
 }
 
-/* ── FILTROS ──────────────────────────────────────────────────────────────── */
+/* ── FILTERS ──────────────────────────────────────────────────────────────── */
 
-.filtros-bar {
+.filters-bar {
     display: flex;
     gap: 14px;
     background: white;
@@ -86,15 +86,15 @@ h1 {
     flex-wrap: wrap;
 }
 
-.filtro-grupo label {
+.filter-group label {
     display: block;
     font-size: 12px;
     color: #6b7280;
     margin-bottom: 4px;
 }
 
-.filtro-grupo input,
-.filtro-grupo select {
+.filter-group input,
+.filter-group select {
     padding: 8px 10px;
     border: 1px solid #d1d5db;
     border-radius: 7px;
@@ -103,13 +103,13 @@ h1 {
     background: white;
 }
 
-.filtro-grupo input:focus,
-.filtro-grupo select:focus {
+.filter-group input:focus,
+.filter-group select:focus {
     outline: none;
     border-color: #2f6fed;
 }
 
-.btn-filtrar {
+.btn-filter {
     background: #2f6fed;
     color: white;
     border: none;
@@ -121,7 +121,7 @@ h1 {
     transition: 0.2s;
 }
 
-.btn-filtrar:hover {
+.btn-filter:hover {
     background: #1c54d1;
 }
 
@@ -153,16 +153,16 @@ h1 {
     color: #1a1a2e;
 }
 
-.stat-card.ingreso     { border-left: 4px solid #16a34a; border-radius: 0 10px 10px 0; }
-.stat-card.transaccion { border-left: 4px solid #2f6fed; border-radius: 0 10px 10px 0; }
-.stat-card.promedio    { border-left: 4px solid #f59e0b; border-radius: 0 10px 10px 0; }
-.stat-card.activa      { border-left: 4px solid #16a34a; border-radius: 0 10px 10px 0; }
-.stat-card.proxima     { border-left: 4px solid #f59e0b; border-radius: 0 10px 10px 0; }
-.stat-card.vencida     { border-left: 4px solid #dc2626; border-radius: 0 10px 10px 0; }
+.stat-card.income     { border-left: 4px solid #16a34a; border-radius: 0 10px 10px 0; }
+.stat-card.transaction { border-left: 4px solid #2f6fed; border-radius: 0 10px 10px 0; }
+.stat-card.average    { border-left: 4px solid #f59e0b; border-radius: 0 10px 10px 0; }
+.stat-card.active      { border-left: 4px solid #16a34a; border-radius: 0 10px 10px 0; }
+.stat-card.upcoming     { border-left: 4px solid #f59e0b; border-radius: 0 10px 10px 0; }
+.stat-card.expired     { border-left: 4px solid #dc2626; border-radius: 0 10px 10px 0; }
 
-/* ── ALERTA VENCIDAS ─────────────────────────────────────────────────────── */
+/* ── EXPIRED ALERT ─────────────────────────────────────────────────────── */
 
-.alerta-vencidas {
+.expired-alert {
     background: #fef9c3;
     border: 1px solid #fde047;
     border-radius: 8px;
@@ -176,16 +176,16 @@ h1 {
     gap: 8px;
 }
 
-/* ── TOP BAR MENSUALIDADES ───────────────────────────────────────────────── */
+/* ── TOP BAR SUBSCRIPTIONS ───────────────────────────────────────────────── */
 
-.top-bar-mens {
+.top-bar-subs {
     display: flex;
     gap: 12px;
     margin-bottom: 16px;
     align-items: center;
 }
 
-.top-bar-mens input {
+.top-bar-subs input {
     flex: 1;
     padding: 10px 14px;
     border: 1px solid #d1d5db;
@@ -194,12 +194,12 @@ h1 {
     background: white;
 }
 
-.top-bar-mens input:focus {
+.top-bar-subs input:focus {
     outline: none;
     border-color: #2f6fed;
 }
 
-/* ── TABLA ────────────────────────────────────────────────────────────────── */
+/* ── TABLE ────────────────────────────────────────────────────────────────── */
 
 .table-card {
     background: white;
@@ -238,12 +238,12 @@ tr:hover td {
     background: #f9fafb;
 }
 
-.row-vencida td { background: #fff5f5; }
-.row-proxima td { background: #fffbeb; }
-.row-vencida:hover td { background: #fee2e2; }
-.row-proxima:hover td { background: #fef3c7; }
+.row-expired td { background: #fff5f5; }
+.row-upcoming td { background: #fffbeb; }
+.row-expired:hover td { background: #fee2e2; }
+.row-upcoming:hover td { background: #fef3c7; }
 
-.sin-resultados {
+.no-results {
     text-align: center;
     padding: 36px;
     color: #9ca3af;
@@ -260,18 +260,18 @@ tr:hover td {
     display: inline-block;
 }
 
-.badge-tiempo  { background: #e8f0ff; color: #1d4ed8; }
-.badge-mens    { background: #ede9fe; color: #5b21b6; }
-.badge-efec    { background: #d1fae5; color: #065f46; }
-.badge-transf  { background: #fef3c7; color: #92400e; }
-.badge-tarj    { background: #fce7f3; color: #9d174d; }
-.badge-activa  { background: #d1fae5; color: #065f46; }
-.badge-proxima { background: #fef3c7; color: #92400e; }
-.badge-vencida { background: #fee2e2; color: #991b1b; }
+.badge-time  { background: #e8f0ff; color: #1d4ed8; }
+.badge-sub    { background: #ede9fe; color: #5b21b6; }
+.badge-cash    { background: #d1fae5; color: #065f46; }
+.badge-transfer  { background: #fef3c7; color: #92400e; }
+.badge-card    { background: #fce7f3; color: #9d174d; }
+.badge-active  { background: #d1fae5; color: #065f46; }
+.badge-upcoming { background: #fef3c7; color: #92400e; }
+.badge-expired { background: #fee2e2; color: #991b1b; }
 
-/* ── PLACA TAG ────────────────────────────────────────────────────────────── */
+/* ── PLATE TAG ────────────────────────────────────────────────────────────── */
 
-.placa-tag {
+.plate-tag {
     background: #1a1a2e;
     color: white;
     padding: 3px 9px;
@@ -281,15 +281,15 @@ tr:hover td {
     letter-spacing: 0.5px;
 }
 
-/* ── TEXTO HELPERS ────────────────────────────────────────────────────────── */
+/* ── TEXT HELPERS ────────────────────────────────────────────────────────── */
 
 .text-muted   { color: #9ca3af; }
 .text-success { color: #16a34a; }
 .font-bold    { font-weight: bold; }
 
-/* ── BOTONES ACCIONES ─────────────────────────────────────────────────────── */
+/* ── ACTION BUTTONS ─────────────────────────────────────────────────────── */
 
-.btn-ver {
+.btn-view {
     background: #e8f0ff;
     color: #2f6fed;
     border: 1px solid #2f6fed;
@@ -301,12 +301,12 @@ tr:hover td {
     transition: 0.2s;
 }
 
-.btn-ver:hover {
+.btn-view:hover {
     background: #2f6fed;
     color: white;
 }
 
-.btn-renovar {
+.btn-renew {
     background: #2f6fed;
     color: white;
     border: none;
@@ -317,11 +317,11 @@ tr:hover td {
     transition: 0.2s;
 }
 
-.btn-renovar:hover {
+.btn-renew:hover {
     background: #1c54d1;
 }
 
-.btn-editar {
+.btn-edit {
     background: #fff7e6;
     color: #b45309;
     border: 1px solid #b45309;
@@ -333,12 +333,12 @@ tr:hover td {
     transition: 0.2s;
 }
 
-.btn-editar:hover {
+.btn-edit:hover {
     background: #b45309;
     color: white;
 }
 
-.btn-borrar {
+.btn-delete {
     background: #fff0f0;
     color: #dc2626;
     border: 1px solid #dc2626;
@@ -349,7 +349,7 @@ tr:hover td {
     transition: 0.2s;
 }
 
-.btn-borrar:hover {
+.btn-delete:hover {
     background: #dc2626;
     color: white;
 }
@@ -370,7 +370,7 @@ tr:hover td {
     background: #1c54d1;
 }
 
-/* ── MODAL MENSUALIDAD ────────────────────────────────────────────────────── */
+/* ── SUBSCRIPTION MODAL ────────────────────────────────────────────────────── */
 
 .modal-overlay {
     position: fixed;
@@ -455,9 +455,9 @@ tr:hover td {
     background: #d1d5db;
 }
 
-/* ── RECIBO ───────────────────────────────────────────────────────────────── */
+/* ── RECEIPT ───────────────────────────────────────────────────────────────── */
 
-.recibo-overlay {
+.receipt-overlay {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
@@ -468,7 +468,7 @@ tr:hover td {
     z-index: 2000;
 }
 
-.recibo-card {
+.receipt-card {
     background: white;
     border-radius: 12px;
     width: 380px;
@@ -476,25 +476,25 @@ tr:hover td {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-.recibo-header {
+.receipt-header {
     background: #0f1c2e;
     padding: 18px;
     text-align: center;
 }
 
-.recibo-titulo {
+.receipt-title {
     font-size: 16px;
     font-weight: bold;
     color: white;
     margin-bottom: 2px;
 }
 
-.recibo-subtitulo {
+.receipt-subtitle {
     font-size: 11px;
     color: #9fa9b8;
 }
 
-.recibo-num {
+.receipt-num {
     background: #2f6fed;
     color: white;
     text-align: center;
@@ -504,11 +504,11 @@ tr:hover td {
     letter-spacing: 1px;
 }
 
-.recibo-body {
+.receipt-body {
     padding: 20px;
 }
 
-.recibo-check {
+.receipt-check {
     width: 40px;
     height: 40px;
     background: #d1fae5;
@@ -524,12 +524,12 @@ tr:hover td {
     line-height: 40px;
 }
 
-.recibo-placa-wrap {
+.receipt-plate-wrap {
     text-align: center;
     margin-bottom: 16px;
 }
 
-.recibo-placa {
+.receipt-plate {
     display: inline-block;
     background: #1a1a2e;
     color: white;
@@ -540,20 +540,20 @@ tr:hover td {
     letter-spacing: 2px;
 }
 
-.recibo-sub {
+.receipt-sub {
     display: block;
     font-size: 12px;
     color: #6b7280;
     margin-top: 6px;
 }
 
-.recibo-filas {
+.receipt-rows {
     border-top: 1px dashed #e5e7eb;
     padding-top: 12px;
     margin-bottom: 12px;
 }
 
-.recibo-fila {
+.receipt-row {
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
@@ -561,7 +561,7 @@ tr:hover td {
     border-bottom: 1px solid #f3f4f6;
 }
 
-.recibo-fila:last-child {
+.receipt-row:last-child {
     border-bottom: none;
 }
 
@@ -579,7 +579,7 @@ tr:hover td {
     color: #16a34a;
 }
 
-.total-mensual {
+.total-monthly {
     background: #eff6ff;
     border-radius: 8px;
     padding: 12px 14px;
@@ -588,14 +588,14 @@ tr:hover td {
     text-align: center;
 }
 
-.recibo-footer {
+.receipt-footer {
     border-top: 1px solid #f3f4f6;
     padding: 14px 20px;
     display: flex;
     gap: 10px;
 }
 
-.recibo-footer button {
+.receipt-footer button {
     flex: 1;
     padding: 10px;
     border-radius: 8px;
@@ -607,13 +607,13 @@ tr:hover td {
     color: white;
 }
 
-.btn-cerrar-recibo {
+.btn-close-receipt {
     background: white !important;
     color: #374151 !important;
     border: 1px solid #d1d5db !important;
 }
 
-.btn-cerrar-recibo:hover {
+.btn-close-receipt:hover {
     background: #f3f4f6 !important;
 }
 

@@ -21,7 +21,7 @@ h1 {
     font-size: 14px;
 }
 
-/* FILTROS */
+/* FILTERS */
 .filters {
     display: flex;
     gap: 20px;
@@ -100,16 +100,16 @@ h1 {
     margin-bottom: 4px;
 }
 
-.card.ingresos  { border-left: 4px solid #16a34a; }
-.card.vehiculos { border-left: 4px solid #2f6fed; }
-.card.promedio  { border-left: 4px solid #f59e0b; }
+.card.income  { border-left: 4px solid #16a34a; }
+.card.vehicles { border-left: 4px solid #2f6fed; }
+.card.average  { border-left: 4px solid #f59e0b; }
 
 .green {
     color: #16a34a;
     font-size: 13px;
 }
 
-/* GRÁFICOS */
+/* CHARTS */
 .charts {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -129,8 +129,8 @@ h1 {
     color: #1a1a2e;
 }
 
-/* Sin datos */
-.sin-datos {
+/* No data */
+.no-data {
     text-align: center;
     padding: 30px;
     color: #9ca3af;

@@ -63,7 +63,7 @@ resize:none;
 margin-top:10px;
 }
 
-/* BOTONES */
+/* BUTTONS */
 
 .buttons{
 display:flex;
@@ -87,20 +87,20 @@ background:#2563eb;
 color:white;
 }
 
-/* TARIFAS */
+/* RATES */
 
-.tarifas{
+.rates{
 margin-top:20px;
 background:#e8f0ff;
 padding:20px;
 border-radius:8px;
 }
 
-.tarifas ul{
+.rates ul{
 padding-left:20px;
 }
 
-.notif-mensual {
+.monthly-notice {
     background: #ecfdf5;
     color: #065f46;
     border: 1px solid #6ee7b7;

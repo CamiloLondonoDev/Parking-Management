@@ -1,52 +1,52 @@
-// ─── SIDEBAR: USUARIO DINÁMICO ────────────────────────────────────────────────
+// ─── SIDEBAR: DYNAMIC USER ────────────────────────────────────────────────────
 
-function cargarUsuarioSidebar() {
+function loadSidebarUser() {
     const sessionData = localStorage.getItem('session');
     if (!sessionData) return;
 
-    const usuario = JSON.parse(sessionData);
+    const user = JSON.parse(sessionData);
 
-    const nombre   = document.getElementById('sidebarNombre');
-    const correo   = document.getElementById('sidebarCorreo');
-    const rol      = document.getElementById('sidebarRol');
+    const name  = document.getElementById('sidebarName');
+    const email = document.getElementById('sidebarEmail');
+    const role  = document.getElementById('sidebarRole');
 
-    if (nombre) nombre.textContent = usuario.nombre  || 'Usuario';
-    if (correo) correo.textContent = usuario.correo  || '';
-    if (rol)    rol.textContent    = usuario.rol     || '';
+    if (name)  name.textContent  = user.name  || 'User';
+    if (email) email.textContent = user.email || '';
+    if (role)  role.textContent  = user.role  || '';
 }
 
-function abrirModalUsuario() {
+function openUserModal() {
     const sessionData = localStorage.getItem('session');
     if (!sessionData) return;
 
     const u = JSON.parse(sessionData);
 
-    document.getElementById('modalNombre').textContent    = u.nombre    || '-';
-    document.getElementById('modalRol').textContent       = u.rol       || '-';
-    document.getElementById('modalCorreo').textContent    = u.correo    || '-';
-    document.getElementById('modalTelefono').textContent  = u.telefono  || '-';
-    document.getElementById('modalDocumento').textContent = u.documento || '-';
+    document.getElementById('modalName').textContent     = u.name     || '-';
+    document.getElementById('modalRole').textContent     = u.role     || '-';
+    document.getElementById('modalEmail').textContent    = u.email    || '-';
+    document.getElementById('modalPhone').textContent    = u.phone    || '-';
+    document.getElementById('modalDocument').textContent = u.document || '-';
 
-    // Avatar con inicial del nombre
+    // Avatar with the initial of the name
     const avatar = document.getElementById('modalAvatar');
-    if (avatar) avatar.textContent = (u.nombre || 'U')[0].toUpperCase();
+    if (avatar) avatar.textContent = (u.name || 'U')[0].toUpperCase();
 
-    document.getElementById('modalUsuario').classList.add('visible');
+    document.getElementById('userModal').classList.add('visible');
 
 }
 
-function cerrarModalUsuario() {
-    document.getElementById('modalUsuario').classList.remove('visible');}
+function closeUserModal() {
+    document.getElementById('userModal').classList.remove('visible');}
 
-function cerrarSesion() {
-    // Limpiar solo la sesión, no todos los datos del sistema
+function logout() {
+    // Clear only the session, not all system data
     localStorage.removeItem('session');
     window.location.href = 'login.html';
 }
 
-// Cerrar modal al hacer clic fuera
-document.getElementById('modalUsuario').addEventListener('click', function(e) {
-    if (e.target === this) cerrarModalUsuario();
+// Close modal when clicking outside
+document.getElementById('userModal').addEventListener('click', function(e) {
+    if (e.target === this) closeUserModal();
 });
 
-document.addEventListener('DOMContentLoaded', cargarUsuarioSidebar);
+document.addEventListener('DOMContentLoaded', loadSidebarUser);

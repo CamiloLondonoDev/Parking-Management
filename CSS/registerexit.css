@@ -25,7 +25,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* ── BUSCADOR ─────────────────────────────────────────────────────────────── */
+/* ── SEARCH BOX ─────────────────────────────────────────────────────────────── */
 
 .search-box {
     display: flex;
@@ -112,7 +112,7 @@ h1 {
     letter-spacing: 1px;
 }
 
-.badge-tipo {
+.badge-type {
     background: #e8f0ff;
     color: #1d4ed8;
     padding: 4px 12px;
@@ -121,7 +121,7 @@ h1 {
     font-weight: 500;
 }
 
-/* ── GRID CAMPOS ──────────────────────────────────────────────────────────── */
+/* ── FIELDS GRID ──────────────────────────────────────────────────────────── */
 
 .vehicle-grid {
     display: grid;
@@ -150,9 +150,9 @@ h1 {
     color: #1a1a2e;
 }
 
-/* ── COBRO BOX ────────────────────────────────────────────────────────────── */
+/* ── CHARGE BOX ────────────────────────────────────────────────────────────── */
 
-.cobro-box {
+.charge-box {
     background: #f8fafc;
     border-radius: 10px;
     padding: 20px;
@@ -160,7 +160,7 @@ h1 {
     border: 1px solid #e5e7eb;
 }
 
-.cobro-label {
+.charge-label {
     font-size: 12px;
     color: #6b7280;
     margin-bottom: 4px;
@@ -169,21 +169,21 @@ h1 {
     letter-spacing: 0.5px;
 }
 
-.cobro-valor {
+.charge-value {
     font-size: 32px;
     font-weight: bold;
     color: #1a1a2e;
     margin-bottom: 18px;
 }
 
-/* ── MÉTODO DE PAGO ───────────────────────────────────────────────────────── */
+/* ── PAYMENT METHOD ───────────────────────────────────────────────────────── */
 
-.metodo-pago-section {
+.payment-method-section {
     border-top: 1px solid #e5e7eb;
     padding-top: 14px;
 }
 
-.metodo-label {
+.method-label {
     font-size: 12px;
     font-weight: 600;
     color: #374151;
@@ -192,13 +192,13 @@ h1 {
     letter-spacing: 0.5px;
 }
 
-.metodo-opciones {
+.method-options {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
 
-.btn-metodo {
+.btn-method {
     flex: 1;
     min-width: 120px;
     padding: 10px 14px;
@@ -212,21 +212,21 @@ h1 {
     transition: 0.15s;
 }
 
-.btn-metodo:hover {
+.btn-method:hover {
     border-color: #2f6fed;
     color: #2f6fed;
 }
 
-.btn-metodo.activo {
+.btn-method.active {
     border-color: #2f6fed;
     background: #e8f0ff;
     color: #2f6fed;
     font-weight: 500;
 }
 
-/* ── MENSUAL BOX ──────────────────────────────────────────────────────────── */
+/* ── MONTHLY BOX ──────────────────────────────────────────────────────────── */
 
-.mensual-box {
+.monthly-box {
     display: flex;
     align-items: flex-start;
     gap: 14px;
@@ -240,15 +240,15 @@ h1 {
     line-height: 1.5;
 }
 
-.mensual-icon {
+.monthly-icon {
     font-size: 22px;
     flex-shrink: 0;
     margin-top: 2px;
 }
 
-/* ── NOTA FLUJO AUTOMÁTICO ────────────────────────────────────────────────── */
+/* ── AUTOMATIC FLOW NOTE ────────────────────────────────────────────────── */
 
-.flujo-nota {
+.flow-note {
     background: #f0fdf4;
     border: 1px solid #bbf7d0;
     border-radius: 8px;
@@ -259,7 +259,7 @@ h1 {
     line-height: 1.5;
 }
 
-/* ── BOTÓN CONFIRMAR ──────────────────────────────────────────────────────── */
+/* ── CONFIRM BUTTON ──────────────────────────────────────────────────────── */
 
 .exit-btn {
     width: 100%;
@@ -278,9 +278,9 @@ h1 {
     background: #15803d;
 }
 
-/* ── MODAL RECIBO ─────────────────────────────────────────────────────────── */
+/* ── RECEIPT MODAL ─────────────────────────────────────────────────────────── */
 
-.recibo-overlay {
+.receipt-overlay {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
@@ -291,7 +291,7 @@ h1 {
     z-index: 2000;
 }
 
-.recibo-card {
+.receipt-card {
     background: white;
     border-radius: 12px;
     width: 380px;
@@ -299,25 +299,25 @@ h1 {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-.recibo-header {
+.receipt-header {
     background: #0f1c2e;
     padding: 18px;
     text-align: center;
 }
 
-.recibo-titulo {
+.receipt-title {
     font-size: 16px;
     font-weight: bold;
     color: white;
     margin-bottom: 2px;
 }
 
-.recibo-subtitulo {
+.receipt-subtitle {
     font-size: 11px;
     color: #9fa9b8;
 }
 
-.recibo-num {
+.receipt-num {
     background: #2f6fed;
     color: white;
     text-align: center;
@@ -327,11 +327,11 @@ h1 {
     letter-spacing: 1px;
 }
 
-.recibo-body {
+.receipt-body {
     padding: 20px;
 }
 
-.recibo-check {
+.receipt-check {
     width: 40px;
     height: 40px;
     background: #d1fae5;
@@ -347,12 +347,12 @@ h1 {
     line-height: 40px;
 }
 
-.recibo-placa-wrap {
+.receipt-plate-wrap {
     text-align: center;
     margin-bottom: 16px;
 }
 
-.recibo-placa {
+.receipt-plate {
     display: inline-block;
     background: #1a1a2e;
     color: white;
@@ -363,20 +363,20 @@ h1 {
     letter-spacing: 2px;
 }
 
-.recibo-sub {
+.receipt-sub {
     display: block;
     font-size: 12px;
     color: #6b7280;
     margin-top: 6px;
 }
 
-.recibo-filas {
+.receipt-rows {
     border-top: 1px dashed #e5e7eb;
     padding-top: 12px;
     margin-bottom: 12px;
 }
 
-.recibo-fila {
+.receipt-row {
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
@@ -384,12 +384,12 @@ h1 {
     border-bottom: 1px solid #f3f4f6;
 }
 
-.recibo-fila:last-child { border-bottom: none; }
+.receipt-row:last-child { border-bottom: none; }
 
 .rec-label { color: #6b7280; }
 .rec-val   { font-weight: 500; color: #1a1a2e; }
 
-.recibo-total {
+.receipt-total {
     margin-top: 4px;
 }
 
@@ -404,7 +404,7 @@ h1 {
     color: #16a34a;
 }
 
-.total-mensual {
+.total-monthly {
     background: #eff6ff;
     border-radius: 8px;
     padding: 12px 14px;
@@ -413,14 +413,14 @@ h1 {
     text-align: center;
 }
 
-.recibo-footer {
+.receipt-footer {
     border-top: 1px solid #f3f4f6;
     padding: 14px 20px;
     display: flex;
     gap: 10px;
 }
 
-.recibo-footer button {
+.receipt-footer button {
     flex: 1;
     padding: 10px;
     border-radius: 8px;
@@ -432,13 +432,13 @@ h1 {
     color: white;
 }
 
-.btn-cerrar-recibo {
+.btn-close-receipt {
     background: white !important;
     color: #374151 !important;
     border: 1px solid #d1d5db !important;
 }
 
-.btn-cerrar-recibo:hover {
+.btn-close-receipt:hover {
     background: #f3f4f6 !important;
 }
 
@@ -451,22 +451,22 @@ h1 {
     overflow-y: auto;
 }
 
-/* ── PRINT: solo muestra el recibo ───────────────────────────────────────── */
+/* ── PRINT: only shows the receipt ───────────────────────────────────────── */
 
 @media print {
     .container {
         display: none !important;
     }
-    .recibo-overlay {
+    .receipt-overlay {
         position: static;
         background: none;
         display: block !important;
     }
-    .recibo-card {
+    .receipt-card {
         box-shadow: none;
         width: 100%;
     }
-    .recibo-footer {
+    .receipt-footer {
         display: none;
     }
 }

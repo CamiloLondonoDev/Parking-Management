@@ -101,7 +101,7 @@ border-bottom:1px solid #eee;
 text-align:left;
 }
 
-.estado{
+.status{
 background:#d1fae5;
 color:#065f46;
 padding:4px 10px;
@@ -109,7 +109,7 @@ border-radius:12px;
 font-size:12px;
 }
 
-/* BOTONES */
+/* BUTTONS */
 
 .btn{
 border:none;

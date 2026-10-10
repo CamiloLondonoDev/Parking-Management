@@ -2,61 +2,61 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
 
     event.preventDefault();
 
-    let usuario  = document.getElementById("usuario").value.trim();
+    let username = document.getElementById("username").value.trim();
     let password = document.getElementById("password").value.trim();
-    let mensaje  = document.getElementById("mensajeError");
+    let message  = document.getElementById("errorMessage");
 
-    mensaje.textContent = "";
+    message.textContent = "";
 
-    if (usuario === "" || password === "") {
-        mensaje.textContent = "Todos los campos son obligatorios";
+    if (username === "" || password === "") {
+        message.textContent = "All fields are required";
         return;
     }
 
-    // ─── INTENTAR LOGIN CON USUARIOS_DB ──────────────────────────────────────
-    // Primero busca en los usuarios registrados en el sistema
+    // ─── TRY LOGIN WITH USERS_DB ─────────────────────────────────────────────
+    // First look among the users registered in the system
 
-    const usuarios     = JSON.parse(localStorage.getItem('usuarios_db') || '[]');
-    const userEncontrado = usuarios.find(u =>
-        (u.correo === usuario || u.nombre === usuario) &&
-        u.contrasena === password &&
-        u.estado === 'activo'
+    const users     = JSON.parse(localStorage.getItem('users_db') || '[]');
+    const foundUser = users.find(u =>
+        (u.email === username || u.name === username) &&
+        u.password === password &&
+        u.status === 'active'
     );
 
-    if (userEncontrado) {
+    if (foundUser) {
         localStorage.setItem('session', JSON.stringify({
-            id:        userEncontrado.id,
-            nombre:    userEncontrado.nombre,
-            correo:    userEncontrado.correo,
-            rol:       userEncontrado.rol,
-            telefono:  userEncontrado.telefono  || '-',
-            documento: userEncontrado.documento || '-'
+            id:       foundUser.id,
+            name:     foundUser.name,
+            email:    foundUser.email,
+            role:     foundUser.role,
+            phone:    foundUser.phone    || '-',
+            document: foundUser.document || '-'
         }));
         window.location.href = "dashboard.html";
         return;
     }
 
-    // ─── FALLBACK: CREDENCIALES HARDCODEADAS ─────────────────────────────────
-    // Si no hay usuarios en la DB todavía, permite entrar con admin/12345
+    // ─── FALLBACK: HARDCODED CREDENTIALS ─────────────────────────────────────
+    // If there are no users in the DB yet, allow login with admin/12345
 
-    const usuarioValido  = "admin";
-    const passwordValida = "12345";
+    const validUsername = "admin";
+    const validPassword = "12345";
 
-    if (usuario === usuarioValido && password === passwordValida) {
+    if (username === validUsername && password === validPassword) {
         localStorage.setItem('session', JSON.stringify({
-            id:        0,
-            nombre:    'Administrador',
-            correo:    'admin@autoscolombia.com',
-            rol:       'Administrador',
-            telefono:  '-',
-            documento: '-'
+            id:       0,
+            name:     'Administrator',
+            email:    'admin@autoscolombia.com',
+            role:     'Administrator',
+            phone:    '-',
+            document: '-'
         }));
         window.location.href = "dashboard.html";
         return;
     }
 
-    // ─── CREDENCIALES INCORRECTAS ─────────────────────────────────────────────
+    // ─── INVALID CREDENTIALS ─────────────────────────────────────────────────
 
-    mensaje.textContent = "Usuario o contraseña incorrectos";
+    message.textContent = "Incorrect username or password";
 
 });

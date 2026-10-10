@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -14,52 +14,52 @@
         <aside class="sidebar">
             <div class="logo">
                 🚗 Autos Colombia.
-                <p>Sistema de Parqueo</p>
+                <p>Parking System</p>
             </div>
             <nav class="menu">
                 <a href="dashboard.html" class="active" data-testid="dashboard-link">Dashboard</a>
-                <a href="entrada.html" data-testid="entry-link">Registrar Entrada</a>
-                <a href="registrarsalida.html" data-testid="exit-link">Registrar Salida</a>
-                <a href="espacios.html" data-testid="spaces-link">Espacios</a>
-                <a href="pagos.html" data-testid="payments-link">Pagos</a>
-                <a href="reportes.html" data-testid="reports-link">Reportes</a>
-                <a href="usuarios.html" data-testid="users-link">Usuarios</a>
+                <a href="entry.html" data-testid="entry-link">Register Entry</a>
+                <a href="registerexit.html" data-testid="exit-link">Register Exit</a>
+                <a href="spaces.html" data-testid="spaces-link">Spaces</a>
+                <a href="payments.html" data-testid="payments-link">Payments</a>
+                <a href="reports.html" data-testid="reports-link">Reports</a>
+                <a href="users.html" data-testid="users-link">Users</a>
             </nav>
-            <div class="user" id="sidebarUser" onclick="abrirModalUsuario()" style="cursor:pointer"
+            <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer"
                 data-testid="user-profile">
-                <strong id="sidebarNombre" data-testid="user-name">Cargando...</strong>
-                <p id="sidebarCorreo" data-testid="user-email"></p>
-                <p id="sidebarRol" data-testid="user-role" style="font-size:11px;color:#5a7ab5;margin-top:2px"></p>
+                <strong id="sidebarName" data-testid="user-name">Loading...</strong>
+                <p id="sidebarEmail" data-testid="user-email"></p>
+                <p id="sidebarRole" data-testid="user-role" style="font-size:11px;color:#5a7ab5;margin-top:2px"></p>
             </div>
-            <!-- MODAL USUARIO -->
-            <div id="modalUsuario" class="modal-usuario-overlay">
-                <div class="modal-usuario">
-                    <div class="modal-usuario-header">
+            <!-- USER MODAL -->
+            <div id="userModal" class="user-modal-overlay">
+                <div class="user-modal">
+                    <div class="user-modal-header">
                         <div class="modal-avatar" id="modalAvatar" data-testid="modal-avatar"></div>
                         <div>
-                            <p class="modal-usuario-nombre" id="modalNombre" data-testid="modal-name"></p>
-                            <p class="modal-usuario-rol" id="modalRol" data-testid="modal-role"></p>
+                            <p class="user-modal-name" id="modalName" data-testid="modal-name"></p>
+                            <p class="user-modal-role" id="modalRole" data-testid="modal-role"></p>
                         </div>
                     </div>
-                    <div class="modal-usuario-campos">
-                        <div class="modal-usuario-campo">
-                            <span class="modal-usuario-label">Correo</span>
-                            <span class="modal-usuario-valor" id="modalCorreo" data-testid="modal-email"></span>
+                    <div class="user-modal-fields">
+                        <div class="user-modal-field">
+                            <span class="user-modal-label">Email</span>
+                            <span class="user-modal-value" id="modalEmail" data-testid="modal-email"></span>
                         </div>
-                        <div class="modal-usuario-campo">
-                            <span class="modal-usuario-label">Teléfono</span>
-                            <span class="modal-usuario-valor" id="modalTelefono" data-testid="modal-phone"></span>
+                        <div class="user-modal-field">
+                            <span class="user-modal-label">Phone</span>
+                            <span class="user-modal-value" id="modalPhone" data-testid="modal-phone"></span>
                         </div>
-                        <div class="modal-usuario-campo">
-                            <span class="modal-usuario-label">Documento</span>
-                            <span class="modal-usuario-valor" id="modalDocumento" data-testid="modal-document"></span>
+                        <div class="user-modal-field">
+                            <span class="user-modal-label">Document</span>
+                            <span class="user-modal-value" id="modalDocument" data-testid="modal-document"></span>
                         </div>
                     </div>
-                    <div class="modal-usuario-botones">
-                        <button class="btn-cerrar-modal" onclick="cerrarModalUsuario()"
-                            data-testid="close-modal-btn">Cerrar</button>
-                        <button class="btn-cerrar-sesion" onclick="cerrarSesion()" data-testid="logout-btn">Cerrar
-                            sesión</button>
+                    <div class="user-modal-buttons">
+                        <button class="btn-close-modal" onclick="closeUserModal()"
+                            data-testid="close-modal-btn">Close</button>
+                        <button class="btn-logout" onclick="logout()" data-testid="logout-btn">Log
+                            out</button>
                     </div>
                 </div>
             </div>
@@ -67,59 +67,59 @@
         <!-- MAIN CONTENT -->
         <main class="main">
             <h1 data-testid="dashboard-title">Dashboard</h1>
-            <p class="subtitle" data-testid="dashboard-subtitle">Gestión del Parqueadero Autos Colombia</p>
+            <p class="subtitle" data-testid="dashboard-subtitle">Autos Colombia Parking Management</p>
             <!-- CARDS -->
             <div class="cards">
                 <div class="card" data-testid="dashboard-occupied-spaces-card">
-                    <h3 data-testid="dashboard-occupied-spaces-title">Espacios Ocupados</h3>
+                    <h3 data-testid="dashboard-occupied-spaces-title">Occupied Spaces</h3>
                     <p class="big" data-testid="dashboard-occupied-spaces-value">0/0</p>
                     <div class="bar">
                         <div class="fill"></div>
                     </div>
                 </div>
                 <div class="card" data-testid="dashboard-vehicles-today-card">
-                    <h3 data-testid="dashboard-vehicles-today-title">Vehículos Hoy</h3>
+                    <h3 data-testid="dashboard-vehicles-today-title">Vehicles Today</h3>
                     <p class="big" data-testid="dashboard-vehicles-today-value">0</p>
                 </div>
                 <div class="card" data-testid="dashboard-earnings-today-card">
-                    <h3 data-testid="dashboard-earnings-today-title">Ingresos Hoy</h3>
+                    <h3 data-testid="dashboard-earnings-today-title">Earnings Today</h3>
                     <p class="big" data-testid="dashboard-earnings-today-value">$0</p>
                 </div>
                 <div class="alert-box" data-testid="dashboard-active-alerts-box">
-                    <h4 data-testid="dashboard-active-alerts-title">Alertas Activas</h4>
-                    <ul id="listaAlertas" data-testid="dashboard-active-alerts-list">
-                        <li data-testid="dashboard-no-active-alerts">Sin alertas activas</li>
+                    <h4 data-testid="dashboard-active-alerts-title">Active Alerts</h4>
+                    <ul id="alertList" data-testid="dashboard-active-alerts-list">
+                        <li data-testid="dashboard-no-active-alerts">No active alerts</li>
                     </ul>
                 </div>
             </div>
             <!-- CONTENT GRID -->
             <div class="content">
-                <!-- TABLA -->
+                <!-- TABLE -->
                 <div class="table-card">
                     <div class="table-header" data-testid="dashboard-recent-vehicles-header">
-                        <h2 data-testid="dashboard-recent-vehicles-title">Vehículos Recientes</h2>
+                        <h2 data-testid="dashboard-recent-vehicles-title">Recent Vehicles</h2>
                     </div>
                     <table>
                         <thead>
                             <tr>
-                                <th>Placa</th>
-                                <th>Espacio</th>
-                                <th>Entrada</th>
-                                <th>Tipo</th>
-                                <th>Estado</th>
+                                <th>Plate</th>
+                                <th>Space</th>
+                                <th>Entry</th>
+                                <th>Type</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody id="tablaVehiculos" data-testid="dashboard-recent-vehicles-table">
+                        <tbody id="vehiclesTable" data-testid="dashboard-recent-vehicles-table">
                         </tbody>
                     </table>
                 </div>
-                <!-- ACCIONES -->
+                <!-- ACTIONS -->
                 <div class="actions" data-testid="dashboard-quick-actions">
-                    <h3 data-testid="dashboard-quick-actions-title">Acciones Rápidas</h3>
-                    <button class="btn blue" data-testid="dashboard-register-entry-btn">Registrar Entrada</button>
-                    <button class="btn orange" data-testid="dashboard-register-exit-btn">Registrar Salida</button>
-                    <button class="btn green" data-testid="dashboard-view-spaces-btn">Ver Espacios</button>
-                    <button class="btn purple" data-testid="dashboard-generate-report-btn">Generar Reporte</button>
+                    <h3 data-testid="dashboard-quick-actions-title">Quick Actions</h3>
+                    <button class="btn blue" data-testid="dashboard-register-entry-btn">Register Entry</button>
+                    <button class="btn orange" data-testid="dashboard-register-exit-btn">Register Exit</button>
+                    <button class="btn green" data-testid="dashboard-view-spaces-btn">View Spaces</button>
+                    <button class="btn purple" data-testid="dashboard-generate-report-btn">Generate Report</button>
                 </div>
             </div>
         </main>
