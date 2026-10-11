@@ -21,50 +21,50 @@
         </div>
 
         <nav class="menu">
-            <a href="dashboard.html">Dashboard</a>
-            <a href="entry.html">Register Entry</a>
-            <a href="registerexit.html">Register Exit</a>
-            <a href="spaces.html">Spaces</a>
-            <a href="payments.html">Payments</a>
-            <a class="active" href="reports.html">Reports</a>
-            <a href="users.html">Users</a>
+            <a href="dashboard.html" data-testid="dashboard-link">Dashboard</a>
+            <a href="entry.html" data-testid="entry-link">Register Entry</a>
+            <a href="registerexit.html" data-testid="exit-link">Register Exit</a>
+            <a href="spaces.html" data-testid="spaces-link">Spaces</a>
+            <a href="payments.html" data-testid="payments-link">Payments</a>
+            <a class="active" href="reports.html" data-testid="reports-link">Reports</a>
+            <a href="users.html" data-testid="users-link">Users</a>
         </nav>
 
-        <div class="user" id="sidebarUser" onclick="openUserModal()">
-            <strong id="sidebarName">Loading...</strong>
-            <p id="sidebarEmail"></p>
-            <p class="user-role" id="sidebarRole"></p>
+        <div class="user" id="sidebarUser" onclick="openUserModal()" data-testid="user-profile">
+            <strong id="sidebarName" data-testid="user-name">Loading...</strong>
+            <p id="sidebarEmail" data-testid="user-email"></p>
+            <p class="user-role" id="sidebarRole" data-testid="user-role"></p>
         </div>
 
     </aside>
 
     <!-- USER MODAL -->
-    <div id="userModal" class="user-modal-overlay">
+    <div id="userModal" class="user-modal-overlay" data-testid="user-modal">
         <div class="user-modal">
             <div class="user-modal-header">
-                <div class="modal-avatar" id="modalAvatar"></div>
+                <div class="modal-avatar" id="modalAvatar" data-testid="modal-avatar"></div>
                 <div>
-                    <p class="user-modal-name" id="modalName"></p>
-                    <p class="user-modal-role" id="modalRole"></p>
+                    <p class="user-modal-name" id="modalName" data-testid="modal-name"></p>
+                    <p class="user-modal-role" id="modalRole" data-testid="modal-role"></p>
                 </div>
             </div>
             <div class="user-modal-fields">
                 <div class="user-modal-field">
                     <span class="user-modal-label">Email</span>
-                    <span class="user-modal-value" id="modalEmail"></span>
+                    <span class="user-modal-value" id="modalEmail" data-testid="modal-email"></span>
                 </div>
                 <div class="user-modal-field">
                     <span class="user-modal-label">Phone</span>
-                    <span class="user-modal-value" id="modalPhone"></span>
+                    <span class="user-modal-value" id="modalPhone" data-testid="modal-phone"></span>
                 </div>
                 <div class="user-modal-field">
                     <span class="user-modal-label">Document</span>
-                    <span class="user-modal-value" id="modalDocument"></span>
+                    <span class="user-modal-value" id="modalDocument" data-testid="modal-document"></span>
                 </div>
             </div>
             <div class="user-modal-buttons">
-                <button class="btn-close-modal" onclick="closeUserModal()">Close</button>
-                <button class="btn-logout" onclick="logout()">Log out</button>
+                <button class="btn-close-modal" onclick="closeUserModal()" data-testid="close-modal-btn">Close</button>
+                <button class="btn-logout" onclick="logout()" data-testid="logout-btn">Log out</button>
             </div>
         </div>
     </div>
@@ -73,14 +73,14 @@
     <!-- CONTENT -->
     <main class="main">
 
-        <h1>Reports and Statistics</h1>
+        <h1 data-testid="reports-title">Reports and Statistics</h1>
         <p class="subtitle">Detailed analysis of the parking lot's performance</p>
 
         <!-- FILTERS -->
         <div class="filters">
             <div>
                 <label>Report Type</label>
-                <select id="reportType" onchange="applyFilters()">
+                <select id="reportType" onchange="applyFilters()" data-testid="reports-type-select">
                     <option value="daily">Daily</option>
                     <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option>
@@ -88,11 +88,11 @@
             </div>
             <div>
                 <label>Date From</label>
-                <input type="date" id="dateFrom" onchange="applyFilters()">
+                <input type="date" id="dateFrom" onchange="applyFilters()" data-testid="reports-from-input">
             </div>
             <div>
                 <label>Date To</label>
-                <input type="date" id="dateTo" onchange="applyFilters()">
+                <input type="date" id="dateTo" onchange="applyFilters()" data-testid="reports-to-input">
             </div>
             <!-- <button class="export" onclick="exportPDF()">⬇ Export PDF</button> -->
         </div>
@@ -101,17 +101,17 @@
         <div class="cards">
             <div class="card income">
                 <p>Total Income</p>
-                <h2 id="cardIncome">$0</h2>
-                <span class="green" id="cardIncomeComp"></span>
+                <h2 id="cardIncome" data-testid="reports-income-value">$0</h2>
+                <span class="green" id="cardIncomeComp" data-testid="reports-income-comparison"></span>
             </div>
             <div class="card vehicles">
                 <p>Total Vehicles</p>
-                <h2 id="cardVehicles">0</h2>
-                <span class="green" id="cardVehiclesComp"></span>
+                <h2 id="cardVehicles" data-testid="reports-vehicles-value">0</h2>
+                <span class="green" id="cardVehiclesComp" data-testid="reports-vehicles-comparison"></span>
             </div>
             <div class="card average">
                 <p>Daily Average</p>
-                <h2 id="cardAverage">0</h2>
+                <h2 id="cardAverage" data-testid="reports-average-value">0</h2>
                 <span>vehicles/day</span>
             </div>
         </div>
@@ -120,19 +120,19 @@
         <div class="charts">
             <div class="chart">
                 <h3>Daily Income</h3>
-                <canvas id="incomeChart"></canvas>
+                <canvas id="incomeChart" data-testid="reports-income-chart"></canvas>
             </div>
             <div class="chart">
                 <h3>Vehicles per Day</h3>
-                <canvas id="vehiclesChart"></canvas>
+                <canvas id="vehiclesChart" data-testid="reports-vehicles-chart"></canvas>
             </div>
             <div class="chart">
                 <h3>Distribution by Vehicle Type</h3>
-                <canvas id="typeChart"></canvas>
+                <canvas id="typeChart" data-testid="reports-type-chart"></canvas>
             </div>
             <div class="chart">
                 <h3>Occupancy by Hour</h3>
-                <canvas id="hourChart"></canvas>
+                <canvas id="hourChart" data-testid="reports-hour-chart"></canvas>
             </div>
         </div>
 

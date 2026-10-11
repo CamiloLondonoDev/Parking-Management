@@ -20,47 +20,47 @@
                 <p>Parking System</p>
             </div>
             <nav class="menu">
-                <a href="dashboard.html">Dashboard</a>
-                <a href="entry.html">Register Entry</a>
-                <a class="active" href="registerexit.html">Register Exit</a>
-                <a href="spaces.html">Spaces</a>
-                <a href="payments.html">Payments</a>
-                <a href="reports.html">Reports</a>
-                <a href="users.html">Users</a>
+                <a href="dashboard.html" data-testid="dashboard-link">Dashboard</a>
+                <a href="entry.html" data-testid="entry-link">Register Entry</a>
+                <a class="active" href="registerexit.html" data-testid="exit-link">Register Exit</a>
+                <a href="spaces.html" data-testid="spaces-link">Spaces</a>
+                <a href="payments.html" data-testid="payments-link">Payments</a>
+                <a href="reports.html" data-testid="reports-link">Reports</a>
+                <a href="users.html" data-testid="users-link">Users</a>
             </nav>
-            <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer">
-                <strong id="sidebarName">Loading...</strong>
-                <p id="sidebarEmail"></p>
-                <p id="sidebarRole" style="font-size:11px;color:#5a7ab5;margin-top:2px"></p>
+            <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer" data-testid="user-profile">
+                <strong id="sidebarName" data-testid="user-name">Loading...</strong>
+                <p id="sidebarEmail" data-testid="user-email"></p>
+                <p id="sidebarRole" style="font-size:11px;color:#5a7ab5;margin-top:2px" data-testid="user-role"></p>
             </div>
 
             <!-- USER MODAL -->
-            <div id="userModal" class="user-modal-overlay">
+            <div id="userModal" class="user-modal-overlay" data-testid="user-modal">
                 <div class="user-modal">
                     <div class="user-modal-header">
-                        <div class="modal-avatar" id="modalAvatar"></div>
+                        <div class="modal-avatar" id="modalAvatar" data-testid="modal-avatar"></div>
                         <div>
-                            <p class="user-modal-name" id="modalName"></p>
-                            <p class="user-modal-role" id="modalRole"></p>
+                            <p class="user-modal-name" id="modalName" data-testid="modal-name"></p>
+                            <p class="user-modal-role" id="modalRole" data-testid="modal-role"></p>
                         </div>
                     </div>
                     <div class="user-modal-fields">
                         <div class="user-modal-field">
                             <span class="user-modal-label">Email</span>
-                            <span class="user-modal-value" id="modalEmail"></span>
+                            <span class="user-modal-value" id="modalEmail" data-testid="modal-email"></span>
                         </div>
                         <div class="user-modal-field">
                             <span class="user-modal-label">Phone</span>
-                            <span class="user-modal-value" id="modalPhone"></span>
+                            <span class="user-modal-value" id="modalPhone" data-testid="modal-phone"></span>
                         </div>
                         <div class="user-modal-field">
                             <span class="user-modal-label">Document</span>
-                            <span class="user-modal-value" id="modalDocument"></span>
+                            <span class="user-modal-value" id="modalDocument" data-testid="modal-document"></span>
                         </div>
                     </div>
                     <div class="user-modal-buttons">
-                        <button class="btn-close-modal" onclick="closeUserModal()">Close</button>
-                        <button class="btn-logout" onclick="logout()">Log out</button>
+                        <button class="btn-close-modal" onclick="closeUserModal()" data-testid="close-modal-btn">Close</button>
+                        <button class="btn-logout" onclick="logout()" data-testid="logout-btn">Log out</button>
                     </div>
                 </div>
             </div>
@@ -70,87 +70,87 @@
         <!-- CONTENT -->
         <main class="main">
 
-            <h1>Register Exit</h1>
+            <h1 data-testid="exit-title">Register Exit</h1>
             <p class="subtitle">Search for the vehicle, select the payment method and confirm the exit</p>
 
             <!-- SEARCH BOX -->
             <div class="search-box">
-                <input type="text" id="plate" placeholder="Enter the vehicle plate (e.g.: ABC-123)" />
-                <button onclick="searchVehicle()">Search</button>
+                <input type="text" id="plate" placeholder="Enter the vehicle plate (e.g.: ABC-123)" data-testid="exit-plate-input"/>
+                <button onclick="searchVehicle()" data-testid="exit-search-btn">Search</button>
             </div>
 
             <!-- EMPTY MESSAGE -->
-            <div class="result" id="placeholder">
+            <div class="result" id="placeholder" data-testid="exit-placeholder">
                 <div class="car-icon">🚗</div>
                 <p>Enter a plate to search for the vehicle</p>
             </div>
 
             <!-- NOT FOUND -->
-            <div class="result result-error" id="notFound" style="display:none">
+            <div class="result result-error" id="notFound" style="display:none" data-testid="exit-not-found">
                 <div class="car-icon">❌</div>
-                <p id="notFoundMsg"></p>
+                <p id="notFoundMsg" data-testid="exit-not-found-message"></p>
             </div>
 
             <!-- VEHICLE INFORMATION -->
-            <div class="vehicle-card" id="info" style="display:none">
+            <div class="vehicle-card" id="info" style="display:none" data-testid="exit-vehicle-card">
 
                 <div class="vehicle-header">
-                    <h2 id="vPlate"></h2>
-                    <span class="badge-type" id="vType"></span>
+                    <h2 id="vPlate" data-testid="exit-vehicle-plate"></h2>
+                    <span class="badge-type" id="vType" data-testid="exit-vehicle-type"></span>
                 </div>
 
                 <div class="vehicle-grid">
 
                     <div class="vehicle-field">
                         <span class="field-label">Space</span>
-                        <span class="field-value" id="vSpace"></span>
+                        <span class="field-value" id="vSpace" data-testid="exit-vehicle-space"></span>
                     </div>
 
                     <div class="vehicle-field">
                         <span class="field-label">Modality</span>
-                        <span class="field-value" id="vModality"></span>
+                        <span class="field-value" id="vModality" data-testid="exit-vehicle-modality"></span>
                     </div>
 
                     <div class="vehicle-field">
                         <span class="field-label">Entry time</span>
-                        <span class="field-value" id="vEntry"></span>
+                        <span class="field-value" id="vEntry" data-testid="exit-vehicle-entry"></span>
                     </div>
 
                     <div class="vehicle-field">
                         <span class="field-label">Exit time</span>
-                        <span class="field-value" id="vExit"></span>
+                        <span class="field-value" id="vExit" data-testid="exit-vehicle-exit"></span>
                     </div>
 
                     <div class="vehicle-field">
                         <span class="field-label">Total time</span>
-                        <span class="field-value" id="vDuration"></span>
+                        <span class="field-value" id="vDuration" data-testid="exit-vehicle-duration"></span>
                     </div>
 
                     <div class="vehicle-field">
                         <span class="field-label">Charge detail</span>
-                        <span class="field-value" id="vDetail"></span>
+                        <span class="field-value" id="vDetail" data-testid="exit-vehicle-detail"></span>
                     </div>
 
                 </div>
 
                 <!-- REGULAR CHARGE -->
-                <div id="chargeSection" class="charge-box">
+                <div id="chargeSection" class="charge-box" data-testid="exit-charge-section">
                     <div class="charge-label">Total to pay</div>
-                    <div class="charge-value" id="vPayment"></div>
+                    <div class="charge-value" id="vPayment" data-testid="exit-total-value"></div>
 
                     <!-- PAYMENT METHOD — only visible on regular charge -->
                     <div class="payment-method-section">
                         <div class="method-label">Payment method</div>
                         <div class="method-options">
-                            <button class="btn-method active" data-method="Cash"     onclick="selectMethod(this)">💵 Cash</button>
-                            <button class="btn-method"        data-method="Transfer" onclick="selectMethod(this)">🏦 Transfer</button>
-                            <button class="btn-method"        data-method="Card"     onclick="selectMethod(this)">💳 Card</button>
+                            <button class="btn-method active" data-method="Cash"     onclick="selectMethod(this)" data-testid="exit-method-cash-btn">💵 Cash</button>
+                            <button class="btn-method"        data-method="Transfer" onclick="selectMethod(this)" data-testid="exit-method-transfer-btn">🏦 Transfer</button>
+                            <button class="btn-method"        data-method="Card"     onclick="selectMethod(this)" data-testid="exit-method-card-btn">💳 Card</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- MONTHLY: no charge -->
-                <div id="monthlySection" class="monthly-box" style="display:none">
+                <div id="monthlySection" class="monthly-box" style="display:none" data-testid="exit-monthly-section">
                     <div class="monthly-icon">ℹ️</div>
                     <div>
                         <strong>Customer with active subscription</strong>
@@ -164,7 +164,7 @@
                     <strong>Payments → History</strong> automatically.
                 </div>
 
-                <button class="exit-btn" onclick="registerExit()">
+                <button class="exit-btn" onclick="registerExit()" data-testid="exit-confirm-btn">
                     Confirm Exit and Payment
                 </button>
 
@@ -175,25 +175,25 @@
     </div>
 
     <!-- RECEIPT MODAL —-->
-    <div id="receiptModal" class="receipt-overlay" style="display:none">
+    <div id="receiptModal" class="receipt-overlay" style="display:none" data-testid="exit-receipt-modal">
         <div class="receipt-card">
             <div class="receipt-header">
                 <div class="receipt-title">🚗 Autos Colombia</div>
                 <div class="receipt-subtitle">Parking System — Payment Receipt</div>
             </div>
-            <div class="receipt-num" id="receiptNumber"></div>
+            <div class="receipt-num" id="receiptNumber" data-testid="exit-receipt-number"></div>
             <div class="receipt-body">
                 <div class="receipt-check">✓</div>
                 <div class="receipt-plate-wrap">
-                    <span class="receipt-plate" id="recPlate"></span>
-                    <span class="receipt-sub" id="recTypeSpace"></span>
+                    <span class="receipt-plate" id="recPlate" data-testid="exit-receipt-plate"></span>
+                    <span class="receipt-sub" id="recTypeSpace" data-testid="exit-receipt-type-space"></span>
                 </div>
-                <div class="receipt-rows" id="receiptRows"></div>
-                <div class="receipt-total" id="receiptTotal"></div>
+                <div class="receipt-rows" id="receiptRows" data-testid="exit-receipt-rows"></div>
+                <div class="receipt-total" id="receiptTotal" data-testid="exit-receipt-total"></div>
             </div>
             <div class="receipt-footer">
-                <button onclick="window.print()">🖨 Print</button>
-                <button class="btn-close-receipt" onclick="closeReceipt()">Close</button>
+                <button onclick="window.print()" data-testid="exit-receipt-print-btn">🖨 Print</button>
+                <button class="btn-close-receipt" onclick="closeReceipt()" data-testid="exit-receipt-close-btn">Close</button>
             </div>
         </div>
     </div>

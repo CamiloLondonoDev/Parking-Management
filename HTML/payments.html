@@ -20,47 +20,47 @@
                 <p>Parking System</p>
             </div>
             <nav class="menu">
-                <a href="dashboard.html">Dashboard</a>
-                <a href="entry.html">Register Entry</a>
-                <a href="registerexit.html">Register Exit</a>
-                <a href="spaces.html">Spaces</a>
-                <a class="active" href="payments.html">Payments</a>
-                <a href="reports.html">Reports</a>
-                <a href="users.html">Users</a>
+                <a href="dashboard.html" data-testid="dashboard-link">Dashboard</a>
+                <a href="entry.html" data-testid="entry-link">Register Entry</a>
+                <a href="registerexit.html" data-testid="exit-link">Register Exit</a>
+                <a href="spaces.html" data-testid="spaces-link">Spaces</a>
+                <a class="active" href="payments.html" data-testid="payments-link">Payments</a>
+                <a href="reports.html" data-testid="reports-link">Reports</a>
+                <a href="users.html" data-testid="users-link">Users</a>
             </nav>
-            <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer">
-                <strong id="sidebarName">Loading...</strong>
-                <p id="sidebarEmail"></p>
-                <p id="sidebarRole" style="font-size:11px;color:#5a7ab5;margin-top:2px"></p>
+            <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer" data-testid="user-profile">
+                <strong id="sidebarName" data-testid="user-name">Loading...</strong>
+                <p id="sidebarEmail" data-testid="user-email"></p>
+                <p id="sidebarRole" style="font-size:11px;color:#5a7ab5;margin-top:2px" data-testid="user-role"></p>
             </div>
 
             <!-- USER MODAL -->
-            <div id="userModal" class="user-modal-overlay">
+            <div id="userModal" class="user-modal-overlay" data-testid="user-modal">
                 <div class="user-modal">
                     <div class="user-modal-header">
-                        <div class="modal-avatar" id="modalAvatar"></div>
+                        <div class="modal-avatar" id="modalAvatar" data-testid="modal-avatar"></div>
                         <div>
-                            <p class="user-modal-name" id="modalName"></p>
-                            <p class="user-modal-role" id="modalRole"></p>
+                            <p class="user-modal-name" id="modalName" data-testid="modal-name"></p>
+                            <p class="user-modal-role" id="modalRole" data-testid="modal-role"></p>
                         </div>
                     </div>
                     <div class="user-modal-fields">
                         <div class="user-modal-field">
                             <span class="user-modal-label">Email</span>
-                            <span class="user-modal-value" id="modalEmail"></span>
+                            <span class="user-modal-value" id="modalEmail" data-testid="modal-email"></span>
                         </div>
                         <div class="user-modal-field">
                             <span class="user-modal-label">Phone</span>
-                            <span class="user-modal-value" id="modalPhone"></span>
+                            <span class="user-modal-value" id="modalPhone" data-testid="modal-phone"></span>
                         </div>
                         <div class="user-modal-field">
                             <span class="user-modal-label">Document</span>
-                            <span class="user-modal-value" id="modalDocument"></span>
+                            <span class="user-modal-value" id="modalDocument" data-testid="modal-document"></span>
                         </div>
                     </div>
                     <div class="user-modal-buttons">
-                        <button class="btn-close-modal" onclick="closeUserModal()">Close</button>
-                        <button class="btn-logout" onclick="logout()">Log out</button>
+                        <button class="btn-close-modal" onclick="closeUserModal()" data-testid="close-modal-btn">Close</button>
+                        <button class="btn-logout" onclick="logout()" data-testid="logout-btn">Log out</button>
                     </div>
                 </div>
             </div>
@@ -70,15 +70,15 @@
         <!-- MAIN -->
         <main class="main">
 
-            <h1>Payments</h1>
+            <h1 data-testid="payments-title">Payments</h1>
             <p class="subtitle">Charge history and subscription management</p>
 
             <!-- TABS -->
             <div class="tabs-bar">
-                <button class="tab active" id="tabHistory" onclick="switchTab('history')">
+                <button class="tab active" id="tabHistory" onclick="switchTab('history')" data-testid="payments-history-tab">
                     Payment history
                 </button>
-                <button class="tab" id="tabSubscriptions" onclick="switchTab('subscriptions')">
+                <button class="tab" id="tabSubscriptions" onclick="switchTab('subscriptions')" data-testid="payments-subscriptions-tab">
                     Subscriptions
                 </button>
             </div>
@@ -87,7 +87,7 @@
             <!-- ═══════════════════════════════════════════════════
                  TAB 1 — PAYMENT HISTORY
             ════════════════════════════════════════════════════ -->
-            <div id="historyView">
+            <div id="historyView" data-testid="payments-history-view">
 
                 <!-- Info note -->
                 <div class="info-note">
@@ -99,15 +99,15 @@
                 <div class="filters-bar">
                     <div class="filter-group">
                         <label>From</label>
-                        <input type="date" id="hFrom">
+                        <input type="date" id="hFrom" data-testid="payments-from-input">
                     </div>
                     <div class="filter-group">
                         <label>To</label>
-                        <input type="date" id="hTo">
+                        <input type="date" id="hTo" data-testid="payments-to-input">
                     </div>
                     <div class="filter-group">
                         <label>Type</label>
-                        <select id="hType">
+                        <select id="hType" data-testid="payments-type-select">
                             <option value="">All</option>
                             <option value="time">By time</option>
                             <option value="monthly">Subscription</option>
@@ -115,29 +115,29 @@
                     </div>
                     <div class="filter-group">
                         <label>Method</label>
-                        <select id="hMethod">
+                        <select id="hMethod" data-testid="payments-method-select">
                             <option value="">All</option>
                             <option value="Cash">Cash</option>
                             <option value="Transfer">Transfer</option>
                             <option value="Card">Card</option>
                         </select>
                     </div>
-                    <button class="btn-filter" onclick="applyHistoryFilters()">Filter</button>
+                    <button class="btn-filter" onclick="applyHistoryFilters()" data-testid="payments-filter-btn">Filter</button>
                 </div>
 
                 <!-- Summary cards -->
                 <div class="stats-grid">
                     <div class="stat-card income">
                         <p>Total collected</p>
-                        <h2 id="statTotal">$0</h2>
+                        <h2 id="statTotal" data-testid="payments-total-value">$0</h2>
                     </div>
                     <div class="stat-card transaction">
                         <p>Transactions</p>
-                        <h2 id="statCount">0</h2>
+                        <h2 id="statCount" data-testid="payments-count-value">0</h2>
                     </div>
                     <div class="stat-card average">
                         <p>Average per charge</p>
-                        <h2 id="statAverage">$0</h2>
+                        <h2 id="statAverage" data-testid="payments-average-value">$0</h2>
                     </div>
                 </div>
 
@@ -155,10 +155,10 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="historyTable">
+                        <tbody id="historyTable" data-testid="payments-history-table">
                         </tbody>
                     </table>
-                    <p id="noPayments" class="no-results" style="display:none">
+                    <p id="noPayments" class="no-results" style="display:none" data-testid="payments-empty-message">
                         No payments recorded in the selected period.
                     </p>
                 </div>
@@ -169,32 +169,32 @@
             <!-- ═══════════════════════════════════════════════════
                  TAB 2 — SUBSCRIPTIONS
             ════════════════════════════════════════════════════ -->
-            <div id="subscriptionsView" style="display:none">
+            <div id="subscriptionsView" style="display:none" data-testid="payments-subscriptions-view">
 
                 <!-- Summary cards -->
                 <div class="stats-grid">
                     <div class="stat-card active">
                         <p>Active</p>
-                        <h2 id="sStatActive">0</h2>
+                        <h2 id="sStatActive" data-testid="subscriptions-active-value">0</h2>
                     </div>
                     <div class="stat-card upcoming">
                         <p>Expiring soon</p>
-                        <h2 id="sStatUpcoming">0</h2>
+                        <h2 id="sStatUpcoming" data-testid="subscriptions-upcoming-value">0</h2>
                     </div>
                     <div class="stat-card expired">
                         <p>Expired</p>
-                        <h2 id="sStatExpired">0</h2>
+                        <h2 id="sStatExpired" data-testid="subscriptions-expired-value">0</h2>
                     </div>
                 </div>
 
                 <!-- Expired alert -->
-                <div id="expiredAlert" class="expired-alert" style="display:none"></div>
+                <div id="expiredAlert" class="expired-alert" style="display:none" data-testid="subscriptions-expired-alert"></div>
 
                 <!-- Subscriptions top bar -->
                 <div class="top-bar-subs">
                     <input type="text" id="subSearch" placeholder="Search by plate or owner..."
-                        oninput="filterSubscriptions()">
-                    <button class="btn-primary" onclick="openNewSubscriptionModal()">+ New Subscription</button>
+                        oninput="filterSubscriptions()" data-testid="subscriptions-search-input">
+                    <button class="btn-primary" onclick="openNewSubscriptionModal()" data-testid="subscriptions-new-btn">+ New Subscription</button>
                 </div>
 
                 <!-- Table -->
@@ -210,10 +210,10 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="subscriptionsTable">
+                        <tbody id="subscriptionsTable" data-testid="subscriptions-table">
                         </tbody>
                     </table>
-                    <p id="noSubscriptions" class="no-results" style="display:none">
+                    <p id="noSubscriptions" class="no-results" style="display:none" data-testid="subscriptions-empty-message">
                         No subscriptions registered.
                     </p>
                 </div>
@@ -224,25 +224,25 @@
             <!-- ═══════════════════════════════════════════════════
                  PAYMENT RECEIPT MODAL
             ════════════════════════════════════════════════════ -->
-            <div id="receiptModal" class="receipt-overlay" style="display:none">
+            <div id="receiptModal" class="receipt-overlay" style="display:none" data-testid="payments-receipt-modal">
                 <div class="receipt-card">
                     <div class="receipt-header">
                         <div class="receipt-title">🚗 Autos Colombia</div>
                         <div class="receipt-subtitle">Parking System — Payment Receipt</div>
                     </div>
-                    <div class="receipt-num" id="receiptNumber"></div>
+                    <div class="receipt-num" id="receiptNumber" data-testid="payments-receipt-number"></div>
                     <div class="receipt-body">
                         <div class="receipt-check">✓</div>
                         <div class="receipt-plate-wrap">
-                            <span class="receipt-plate" id="recPlate"></span>
-                            <span class="receipt-sub"   id="recTypeSpace"></span>
+                            <span class="receipt-plate" id="recPlate" data-testid="payments-receipt-plate"></span>
+                            <span class="receipt-sub"   id="recTypeSpace" data-testid="payments-receipt-type-space"></span>
                         </div>
-                        <div class="receipt-rows" id="receiptRows"></div>
-                        <div class="receipt-total" id="receiptTotal"></div>
+                        <div class="receipt-rows" id="receiptRows" data-testid="payments-receipt-rows"></div>
+                        <div class="receipt-total" id="receiptTotal" data-testid="payments-receipt-total"></div>
                     </div>
                     <div class="receipt-footer">
-                        <button onclick="window.print()">🖨 Print</button>
-                        <button class="btn-close-receipt" onclick="closeReceipt()">Close</button>
+                        <button onclick="window.print()" data-testid="payments-receipt-print-btn">🖨 Print</button>
+                        <button class="btn-close-receipt" onclick="closeReceipt()" data-testid="payments-receipt-close-btn">Close</button>
                     </div>
                 </div>
             </div>
@@ -251,21 +251,21 @@
             <!-- ═══════════════════════════════════════════════════
                  NEW / RENEW SUBSCRIPTION MODAL
             ════════════════════════════════════════════════════ -->
-            <div id="subscriptionModal" class="modal-overlay" style="display:none">
+            <div id="subscriptionModal" class="modal-overlay" style="display:none" data-testid="subscription-modal">
                 <div class="modal">
-                    <h3 id="subModalTitle">New Subscription</h3>
+                    <h3 id="subModalTitle" data-testid="subscription-modal-title">New Subscription</h3>
 
                     <div class="form-group">
                         <label>Vehicle plate *</label>
-                        <input type="text" id="subPlate" placeholder="ABC-123">
+                        <input type="text" id="subPlate" placeholder="ABC-123" data-testid="subscription-plate-input">
                     </div>
                     <div class="form-group">
                         <label>Owner *</label>
-                        <input type="text" id="subOwner" placeholder="Full name">
+                        <input type="text" id="subOwner" placeholder="Full name" data-testid="subscription-owner-input">
                     </div>
                     <div class="form-group">
                         <label>Vehicle type *</label>
-                        <select id="subType">
+                        <select id="subType" data-testid="subscription-type-select">
                             <option value="Car">Car — $80,000/month</option>
                             <option value="Motorcycle">Motorcycle — $70,000/month</option>
                             <option value="Pickup">Pickup — $80,000/month</option>
@@ -274,7 +274,7 @@
                     </div>
                     <div class="form-group">
                         <label>Payment method *</label>
-                        <select id="subMethod">
+                        <select id="subMethod" data-testid="subscription-method-select">
                             <option value="Cash">Cash</option>
                             <option value="Transfer">Transfer</option>
                             <option value="Card">Card</option>
@@ -282,8 +282,8 @@
                     </div>
 
                     <div class="modal-buttons">
-                        <button class="btn-cancel" onclick="closeSubscriptionModal()">Cancel</button>
-                        <button class="btn-primary" onclick="saveSubscription()">Save</button>
+                        <button class="btn-cancel" onclick="closeSubscriptionModal()" data-testid="subscription-cancel-btn">Cancel</button>
+                        <button class="btn-primary" onclick="saveSubscription()" data-testid="subscription-save-btn">Save</button>
                     </div>
                 </div>
             </div>

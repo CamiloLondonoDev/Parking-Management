@@ -8,27 +8,27 @@ function loadSpots() {
     const data = localStorage.getItem(SPOTS_KEY);
     if (data) return JSON.parse(data);
 
-    // // Sample data for the first load (same as your original code)
-    // const initial = [
-    //     { number: 'A-10', zone: 'A', type: 'Car', status: 'available', plate: null },
-    //     { number: 'A-11', zone: 'A', type: 'Car', status: 'available', plate: null },
-    //     { number: 'A-12', zone: 'A', type: 'Car', status: 'maintenance', plate: null },
-    //     { number: 'A-13', zone: 'A', type: 'Car', status: 'occupied', plate: 'ABC-123' },
-    //     { number: 'A-14', zone: 'A', type: 'Car', status: 'occupied', plate: 'DEF-456' },
-    //     { number: 'A-15', zone: 'A', type: 'Car', status: 'occupied', plate: 'GHI-789' },
-    //     { number: 'B-01', zone: 'B', type: 'Motorcycle',  status: 'available', plate: null },
-    //     { number: 'B-02', zone: 'B', type: 'Motorcycle',  status: 'available', plate: null },
-    //     { number: 'B-03', zone: 'B', type: 'Motorcycle',  status: 'available', plate: null },
-    //     { number: 'B-04', zone: 'B', type: 'Motorcycle',  status: 'occupied', plate: 'JKL-012' },
-    //     { number: 'B-05', zone: 'B', type: 'Motorcycle',  status: 'occupied', plate: 'MNO-345' },
-    //     { number: 'B-06', zone: 'B', type: 'Motorcycle',  status: 'available', plate: null },
-    //     { number: 'C-01', zone: 'C', type: 'Pickup', status: 'available', plate: null },
-    //     { number: 'C-02', zone: 'C', type: 'Pickup', status: 'occupied', plate: 'PQR-678' },
-    //     { number: 'C-03', zone: 'C', type: 'Pickup', status: 'available', plate: null },
-    //     { number: 'C-04', zone: 'C', type: 'Pickup', status: 'available', plate: null },
-    //     { number: 'C-05', zone: 'C', type: 'Pickup', status: 'occupied', plate: 'STU-901' },
-    //     { number: 'C-06', zone: 'C', type: 'Pickup', status: 'occupied', plate: 'FCS-766' },
-    // ];
+    // Default spots for the first load (same set as entry.js)
+    const initial = [
+        { number: 'A-10', zone: 'A', type: 'Car', status: 'available', plate: null },
+        { number: 'A-11', zone: 'A', type: 'Car', status: 'available', plate: null },
+        { number: 'A-12', zone: 'A', type: 'Car', status: 'maintenance', plate: null },
+        { number: 'A-13', zone: 'A', type: 'Car', status: 'available', plate: null },
+        { number: 'A-14', zone: 'A', type: 'Car', status: 'available', plate: null },
+        { number: 'A-15', zone: 'A', type: 'Car', status: 'available', plate: null },
+        { number: 'B-01', zone: 'B', type: 'Motorcycle', status: 'available', plate: null },
+        { number: 'B-02', zone: 'B', type: 'Motorcycle', status: 'available', plate: null },
+        { number: 'B-03', zone: 'B', type: 'Motorcycle', status: 'available', plate: null },
+        { number: 'B-04', zone: 'B', type: 'Motorcycle', status: 'available', plate: null },
+        { number: 'B-05', zone: 'B', type: 'Motorcycle', status: 'available', plate: null },
+        { number: 'B-06', zone: 'B', type: 'Motorcycle', status: 'available', plate: null },
+        { number: 'C-01', zone: 'C', type: 'Pickup', status: 'available', plate: null },
+        { number: 'C-02', zone: 'C', type: 'Pickup', status: 'available', plate: null },
+        { number: 'C-03', zone: 'C', type: 'Pickup', status: 'available', plate: null },
+        { number: 'C-04', zone: 'C', type: 'Pickup', status: 'available', plate: null },
+        { number: 'C-05', zone: 'C', type: 'Pickup', status: 'available', plate: null },
+        { number: 'C-06', zone: 'C', type: 'Pickup', status: 'available', plate: null },
+    ];
 
     saveSpots(initial);
     return initial;
@@ -61,6 +61,7 @@ function render(list) {
     list.forEach(spot => {
         const div = document.createElement('div');
         div.className = `parking-space ${spot.status}`;
+        div.dataset.testid = `spot-${spot.number}`;
         div.onclick = () => openStatusModal(spot.number);
 
         div.innerHTML = `

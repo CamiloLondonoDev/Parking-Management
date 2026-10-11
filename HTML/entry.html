@@ -22,48 +22,48 @@
             </div>
 
             <nav class="menu">
-                <a href="dashboard.html">Dashboard</a>
-                <a class="active" href="entry.html">Register Entry</a>
-                <a href="registerexit.html">Register Exit</a>
-                <a href="spaces.html">Spaces</a>
-                <a href="payments.html">Payments</a>
-                <a href="reports.html">Reports</a>
-                <a href="users.html">Users</a>
+                <a href="dashboard.html" data-testid="dashboard-link">Dashboard</a>
+                <a class="active" href="entry.html" data-testid="entry-link">Register Entry</a>
+                <a href="registerexit.html" data-testid="exit-link">Register Exit</a>
+                <a href="spaces.html" data-testid="spaces-link">Spaces</a>
+                <a href="payments.html" data-testid="payments-link">Payments</a>
+                <a href="reports.html" data-testid="reports-link">Reports</a>
+                <a href="users.html" data-testid="users-link">Users</a>
             </nav>
 
-            <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer">
-                <strong id="sidebarName">Loading...</strong>
-                <p id="sidebarEmail"></p>
-                <p id="sidebarRole" style="font-size:11px;color:#5a7ab5;margin-top:2px"></p>
+            <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer" data-testid="user-profile">
+                <strong id="sidebarName" data-testid="user-name">Loading...</strong>
+                <p id="sidebarEmail" data-testid="user-email"></p>
+                <p id="sidebarRole" style="font-size:11px;color:#5a7ab5;margin-top:2px" data-testid="user-role"></p>
             </div>
 
             <!-- USER MODAL -->
-            <div id="userModal" class="user-modal-overlay">
+            <div id="userModal" class="user-modal-overlay" data-testid="user-modal">
                 <div class="user-modal">
                     <div class="user-modal-header">
-                        <div class="modal-avatar" id="modalAvatar"></div>
+                        <div class="modal-avatar" id="modalAvatar" data-testid="modal-avatar"></div>
                         <div>
-                            <p class="user-modal-name" id="modalName"></p>
-                            <p class="user-modal-role" id="modalRole"></p>
+                            <p class="user-modal-name" id="modalName" data-testid="modal-name"></p>
+                            <p class="user-modal-role" id="modalRole" data-testid="modal-role"></p>
                         </div>
                     </div>
                     <div class="user-modal-fields">
                         <div class="user-modal-field">
                             <span class="user-modal-label">Email</span>
-                            <span class="user-modal-value" id="modalEmail"></span>
+                            <span class="user-modal-value" id="modalEmail" data-testid="modal-email"></span>
                         </div>
                         <div class="user-modal-field">
                             <span class="user-modal-label">Phone</span>
-                            <span class="user-modal-value" id="modalPhone"></span>
+                            <span class="user-modal-value" id="modalPhone" data-testid="modal-phone"></span>
                         </div>
                         <div class="user-modal-field">
                             <span class="user-modal-label">Document</span>
-                            <span class="user-modal-value" id="modalDocument"></span>
+                            <span class="user-modal-value" id="modalDocument" data-testid="modal-document"></span>
                         </div>
                     </div>
                     <div class="user-modal-buttons">
-                        <button class="btn-close-modal" onclick="closeUserModal()">Close</button>
-                        <button class="btn-logout" onclick="logout()">Log out</button>
+                        <button class="btn-close-modal" onclick="closeUserModal()" data-testid="close-modal-btn">Close</button>
+                        <button class="btn-logout" onclick="logout()" data-testid="logout-btn">Log out</button>
                     </div>
                 </div>
             </div>
@@ -74,25 +74,25 @@
         <!-- MAIN -->
         <main class="main">
 
-            <h1>Entry Registration</h1>
+            <h1 data-testid="entry-title">Entry Registration</h1>
             <p class="subtitle">Enter the details of the vehicle entering the parking lot</p>
 
             <div class="card">
 
-                <form id="entryForm">
+                <form id="entryForm" data-testid="entry-form">
 
                     <div class="grid">
 
-                        <div id="monthlyNotice" class="monthly-notice" style="display:none; grid-column: 1 / -1;"></div>
+                        <div id="monthlyNotice" class="monthly-notice" style="display:none; grid-column: 1 / -1;" data-testid="entry-monthly-notice"></div>
 
                         <div class="form-group">
                             <label>Vehicle Plate *</label>
-                            <input type="text" id="plate" placeholder="ABC-123" required>
+                            <input type="text" id="plate" placeholder="ABC-123" required data-testid="entry-plate-input">
                         </div>
 
                         <div class="form-group">
                             <label>Vehicle Type *</label>
-                            <select id="type" onchange="updateSpots()">
+                            <select id="type" onchange="updateSpots()" data-testid="entry-type-select">
                                 <option value="Car">Car</option>
                                 <option value="Motorcycle">Motorcycle</option>
                                 <option value="Pickup">Pickup</option>
@@ -102,24 +102,24 @@
 
                         <div class="form-group">
                             <label>Owner Name</label>
-                            <input type="text" id="owner" placeholder="John Smith">
+                            <input type="text" id="owner" placeholder="John Smith" data-testid="entry-owner-input">
                         </div>
 
                         <div class="form-group">
                             <label>Contact Phone</label>
-                            <input type="text" id="phone" placeholder="300 123 4567">
+                            <input type="text" id="phone" placeholder="300 123 4567" data-testid="entry-phone-input">
                         </div>
 
                         <div class="form-group">
                             <label>Parking Space *</label>
-                            <select id="space">
+                            <select id="space" data-testid="entry-space-select">
                                 <option value="">Loading spaces...</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>Modality *</label>
-                            <select id="modality">
+                            <select id="modality" data-testid="entry-modality-select">
                                 <option value="hour">Hourly</option>
                                 <option value="day">Daily</option>
                                 <option value="monthly">Monthly</option>
@@ -128,31 +128,31 @@
 
                         <div class="form-group">
                             <label>Entry Date</label>
-                            <input type="date" id="date">
+                            <input type="date" id="date" data-testid="entry-date-input">
                         </div>
 
                         <div class="form-group">
                             <label>Entry Time</label>
-                            <input type="time" id="time">
+                            <input type="time" id="time" data-testid="entry-time-input">
                         </div>
 
                     </div>
 
                     <div class="form-group">
                         <label>Notes</label>
-                        <textarea id="notes" placeholder="Additional notes about the vehicle..."></textarea>
+                        <textarea id="notes" placeholder="Additional notes about the vehicle..." data-testid="entry-notes-input"></textarea>
                     </div>
 
                     <div class="buttons">
-                        <button type="button" class="btn cancel" onclick="window.location.href='dashboard.html'">Cancel</button>
-                        <button type="submit" class="btn primary">Register Entry</button>
+                        <button type="button" class="btn cancel" onclick="window.location.href='dashboard.html'" data-testid="entry-cancel-btn">Cancel</button>
+                        <button type="submit" class="btn primary" data-testid="entry-submit-btn">Register Entry</button>
                     </div>
 
                 </form>
 
             </div>
 
-            <div class="rates">
+            <div class="rates" data-testid="entry-rates-info">
                 <h3>Rate Information</h3>
                 <ul>
                     <li>Car / Pickup: $3,000/hour — $25,000/day — $80,000/month</li>

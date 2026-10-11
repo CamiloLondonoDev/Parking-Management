@@ -157,6 +157,7 @@ function loadHistory() {
         const methodBadge = methodMap[r.paymentMethod] || `<span class="badge">${r.paymentMethod || '-'}</span>`;
 
         const tr = document.createElement('tr');
+        tr.dataset.testid = `payment-row-${r.id}`;
         tr.innerHTML = `
             <td class="text-muted">${receiptNum}</td>
             <td><span class="plate-tag">${r.plate}</span></td>
@@ -165,7 +166,7 @@ function loadHistory() {
             <td>${methodBadge}</td>
             <td class="text-success font-bold">${r.totalCharged > 0 ? formatCurrency(r.totalCharged) : '$0'}</td>
             <td>
-                <button class="btn-view" onclick="viewReceipt(${r.id})">View receipt</button>
+                <button class="btn-view" data-testid="payment-view-btn-${r.id}" onclick="viewReceipt(${r.id})">View receipt</button>
             </td>
         `;
         tbody.appendChild(tr);
@@ -302,6 +303,7 @@ function renderSubscriptions(list) {
 
         const tr = document.createElement('tr');
         tr.className = rowBg;
+        tr.dataset.testid = `subscription-row-${m.id}`;
         tr.innerHTML = `
             <td><span class="plate-tag">${m.plate}</span></td>
             <td>${m.owner || '-'}</td>
@@ -309,10 +311,10 @@ function renderSubscriptions(list) {
             <td>${formatDisplay(m.expirationDate, null)}</td>
             <td>${badgeMap[status]}</td>
             <td>
-                <button class="btn-view"   onclick="viewSubscriptionDetails('${m.id}')">View</button>
-                <button class="btn-edit"   onclick="editSubscription('${m.id}')">Edit</button>
-                <button class="btn-renew"  onclick="renewSubscription('${m.id}')">Renew</button>
-                <button class="btn-delete" onclick="deleteSubscription('${m.id}')">Delete</button>
+                <button class="btn-view"   data-testid="subscription-view-btn-${m.id}"   onclick="viewSubscriptionDetails('${m.id}')">View</button>
+                <button class="btn-edit"   data-testid="subscription-edit-btn-${m.id}"   onclick="editSubscription('${m.id}')">Edit</button>
+                <button class="btn-renew"  data-testid="subscription-renew-btn-${m.id}"  onclick="renewSubscription('${m.id}')">Renew</button>
+                <button class="btn-delete" data-testid="subscription-delete-btn-${m.id}" onclick="deleteSubscription('${m.id}')">Delete</button>
             </td>
         `;
         tbody.appendChild(tr);

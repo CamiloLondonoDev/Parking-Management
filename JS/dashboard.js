@@ -127,6 +127,7 @@ function loadRecent() {
 
     if (valid.length === 0) {
         const tr = document.createElement('tr');
+        tr.dataset.testid = 'dashboard-no-recent-vehicles';
         tr.innerHTML = `<td colspan="5" style="text-align:center;color:#999;padding:20px">
             No recent vehicles (last 5 minutes)
         </td>`;
@@ -137,6 +138,7 @@ function loadRecent() {
     valid.forEach(r => {
         const minutesLeft = Math.ceil((r.expires - now) / 60000);
         const tr = document.createElement('tr');
+        tr.dataset.testid = `dashboard-recent-vehicle-${r.plate}`;
         tr.innerHTML = `
             <td>${r.plate}</td>
             <td>${r.space}</td>

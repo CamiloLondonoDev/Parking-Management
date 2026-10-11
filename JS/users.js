@@ -69,18 +69,19 @@ function renderTable(list) {
 
     list.forEach(u => {
         const tr = document.createElement('tr');
+        tr.dataset.testid = `user-row-${u.id}`;
 
         const roleBadge = u.role === 'Administrator'
-            ? `<span class="badge-admin">${u.role}</span>`
-            : `<span class="badge-operator">${u.role}</span>`;
+            ? `<span class="badge-admin" data-testid="user-role-${u.id}">${u.role}</span>`
+            : `<span class="badge-operator" data-testid="user-role-${u.id}">${u.role}</span>`;
 
         const statusBadge = u.status === 'active'
-            ? `<span class="badge-active">Active</span>`
-            : `<span class="badge-inactive">Inactive</span>`;
+            ? `<span class="badge-active" data-testid="user-status-${u.id}">Active</span>`
+            : `<span class="badge-inactive" data-testid="user-status-${u.id}">Inactive</span>`;
 
         const toggleButton = u.status === 'active'
-            ? `<button class="btn-toggle-off" onclick="openDeactivateModal(${u.id})">Deactivate</button>`
-            : `<button class="btn-toggle-on" onclick="openReactivateModal(${u.id})">Reactivate</button>`;
+            ? `<button class="btn-toggle-off" data-testid="user-toggle-btn-${u.id}" onclick="openDeactivateModal(${u.id})">Deactivate</button>`
+            : `<button class="btn-toggle-on" data-testid="user-toggle-btn-${u.id}" onclick="openReactivateModal(${u.id})">Reactivate</button>`;
 
         tr.innerHTML = `
             <td>${u.name}</td>
@@ -89,7 +90,7 @@ function renderTable(list) {
             <td>${u.email}</td>
             <td>${statusBadge}</td>
             <td>
-                <button class="btn-edit" onclick="editUser(${u.id})">Edit</button>
+                <button class="btn-edit" data-testid="user-edit-btn-${u.id}" onclick="editUser(${u.id})">Edit</button>
                 ${toggleButton}
             </td>
         `;

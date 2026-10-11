@@ -20,50 +20,50 @@
         </div>
 
         <nav class="menu">
-            <a href="dashboard.html">Dashboard</a>
-            <a href="entry.html">Register Entry</a>
-            <a href="registerexit.html">Register Exit</a>
-            <a class="active" href="spaces.html">Spaces</a>
-            <a href="payments.html">Payments</a>
-                <a href="reports.html">Reports</a>
-            <a href="users.html">Users</a>
+            <a href="dashboard.html" data-testid="dashboard-link">Dashboard</a>
+            <a href="entry.html" data-testid="entry-link">Register Entry</a>
+            <a href="registerexit.html" data-testid="exit-link">Register Exit</a>
+            <a class="active" href="spaces.html" data-testid="spaces-link">Spaces</a>
+            <a href="payments.html" data-testid="payments-link">Payments</a>
+                <a href="reports.html" data-testid="reports-link">Reports</a>
+            <a href="users.html" data-testid="users-link">Users</a>
         </nav>
 
-        <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer">
-            <strong id="sidebarName">Loading...</strong>
-            <p id="sidebarEmail"></p>
-            <p id="sidebarRole" style="font-size:11px;color:#5a7ab5;margin-top:2px"></p>
+        <div class="user" id="sidebarUser" onclick="openUserModal()" style="cursor:pointer" data-testid="user-profile">
+            <strong id="sidebarName" data-testid="user-name">Loading...</strong>
+            <p id="sidebarEmail" data-testid="user-email"></p>
+            <p id="sidebarRole" style="font-size:11px;color:#5a7ab5;margin-top:2px" data-testid="user-role"></p>
         </div>
 
     </aside>
 
     <!-- USER MODAL -->
-    <div id="userModal" class="user-modal-overlay">
+    <div id="userModal" class="user-modal-overlay" data-testid="user-modal">
         <div class="user-modal">
             <div class="user-modal-header">
-                <div class="modal-avatar" id="modalAvatar"></div>
+                <div class="modal-avatar" id="modalAvatar" data-testid="modal-avatar"></div>
                 <div>
-                    <p class="user-modal-name" id="modalName"></p>
-                    <p class="user-modal-role" id="modalRole"></p>
+                    <p class="user-modal-name" id="modalName" data-testid="modal-name"></p>
+                    <p class="user-modal-role" id="modalRole" data-testid="modal-role"></p>
                 </div>
             </div>
             <div class="user-modal-fields">
                 <div class="user-modal-field">
                     <span class="user-modal-label">Email</span>
-                    <span class="user-modal-value" id="modalEmail"></span>
+                    <span class="user-modal-value" id="modalEmail" data-testid="modal-email"></span>
                 </div>
                 <div class="user-modal-field">
                     <span class="user-modal-label">Phone</span>
-                    <span class="user-modal-value" id="modalPhone"></span>
+                    <span class="user-modal-value" id="modalPhone" data-testid="modal-phone"></span>
                 </div>
                 <div class="user-modal-field">
                     <span class="user-modal-label">Document</span>
-                    <span class="user-modal-value" id="modalDocument"></span>
+                    <span class="user-modal-value" id="modalDocument" data-testid="modal-document"></span>
                 </div>
             </div>
             <div class="user-modal-buttons">
-                <button class="btn-close-modal" onclick="closeUserModal()">Close</button>
-                <button class="btn-logout" onclick="logout()">Log out</button>
+                <button class="btn-close-modal" onclick="closeUserModal()" data-testid="close-modal-btn">Close</button>
+                <button class="btn-logout" onclick="logout()" data-testid="logout-btn">Log out</button>
             </div>
         </div>
     </div>
@@ -74,10 +74,10 @@
 
         <div class="main-header">
             <div>
-                <h1>Space Management</h1>
+                <h1 data-testid="spaces-title">Space Management</h1>
                 <p class="subtitle">Real-time view of the parking spaces</p>
             </div>
-            <button class="btn-primary" onclick="showSpotForm()">+ New Spot</button>
+            <button class="btn-primary" onclick="showSpotForm()" data-testid="spaces-new-spot-btn">+ New Spot</button>
         </div>
 
 
@@ -85,19 +85,19 @@
         <div class="cards">
             <div class="card total">
                 <p>Total Spaces</p>
-                <h2 id="total">0</h2>
+                <h2 id="total" data-testid="spaces-total-value">0</h2>
             </div>
             <div class="card available">
                 <p>Available</p>
-                <h2 id="available">0</h2>
+                <h2 id="available" data-testid="spaces-available-value">0</h2>
             </div>
             <div class="card occupied">
                 <p>Occupied</p>
-                <h2 id="occupied">0</h2>
+                <h2 id="occupied" data-testid="spaces-occupied-value">0</h2>
             </div>
             <div class="card maintenance">
                 <p>Maintenance</p>
-                <h2 id="maintenance">0</h2>
+                <h2 id="maintenance" data-testid="spaces-maintenance-value">0</h2>
             </div>
         </div>
 
@@ -106,14 +106,14 @@
         <div class="parking-container">
 
             <div class="zone-filters">
-                <button class="filter active" onclick="filterZone('all', this)">All Zones</button>
-                <button class="filter" onclick="filterZone('A', this)">Zone A</button>
-                <button class="filter" onclick="filterZone('B', this)">Zone B</button>
-                <button class="filter" onclick="filterZone('C', this)">Zone C</button>
-                <button class="filter" onclick="filterZone('D', this)">Zone D</button>
+                <button class="filter active" onclick="filterZone('all', this)" data-testid="spaces-filter-all-btn">All Zones</button>
+                <button class="filter" onclick="filterZone('A', this)" data-testid="spaces-filter-a-btn">Zone A</button>
+                <button class="filter" onclick="filterZone('B', this)" data-testid="spaces-filter-b-btn">Zone B</button>
+                <button class="filter" onclick="filterZone('C', this)" data-testid="spaces-filter-c-btn">Zone C</button>
+                <button class="filter" onclick="filterZone('D', this)" data-testid="spaces-filter-d-btn">Zone D</button>
             </div>
 
-            <div class="parking-grid" id="parkingGrid"></div>
+            <div class="parking-grid" id="parkingGrid" data-testid="spaces-grid"></div>
 
         </div>
 
@@ -127,39 +127,39 @@
 
 
         <!-- MODAL: CHANGE STATUS -->
-        <div id="statusModal" class="modal-overlay" style="display:none">
+        <div id="statusModal" class="modal-overlay" style="display:none" data-testid="spaces-status-modal">
             <div class="modal">
-                <h3>Spot <span id="modalSpotId"></span></h3>
-                <p class="modal-current-status">Current status: <span id="modalCurrentStatus"></span></p>
+                <h3>Spot <span id="modalSpotId" data-testid="spaces-modal-spot-id"></span></h3>
+                <p class="modal-current-status">Current status: <span id="modalCurrentStatus" data-testid="spaces-modal-current-status"></span></p>
 
                 <div class="status-options">
-                    <button class="btn-status available" onclick="applyStatus('available')">✔ Available</button>
-                    <button class="btn-status occupied" onclick="applyStatus('occupied')">🚗 Occupied</button>
-                    <button class="btn-status maintenance" onclick="applyStatus('maintenance')">🔧 Maintenance</button>
+                    <button class="btn-status available" onclick="applyStatus('available')" data-testid="spaces-status-available-btn">✔ Available</button>
+                    <button class="btn-status occupied" onclick="applyStatus('occupied')" data-testid="spaces-status-occupied-btn">🚗 Occupied</button>
+                    <button class="btn-status maintenance" onclick="applyStatus('maintenance')" data-testid="spaces-status-maintenance-btn">🔧 Maintenance</button>
                 </div>
 
                 <p class="modal-info">Change recorded by: <strong>Administrator</strong></p>
 
                 <div class="modal-buttons">
-                    <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                    <button class="btn-cancel" onclick="closeModal()" data-testid="spaces-status-cancel-btn">Cancel</button>
                 </div>
             </div>
         </div>
 
 
         <!-- MODAL: NEW SPOT -->
-        <div id="newSpotModal" class="modal-overlay" style="display:none">
+        <div id="newSpotModal" class="modal-overlay" style="display:none" data-testid="spaces-new-spot-modal">
             <div class="modal modal-form">
                 <h3>Register New Spot</h3>
 
                 <div class="form-group">
                     <label>Identifier *</label>
-                    <input type="text" id="newId" placeholder="E.g.: D-01">
+                    <input type="text" id="newId" placeholder="E.g.: D-01" data-testid="spaces-new-id-input">
                 </div>
 
                 <div class="form-group">
                     <label>Zone *</label>
-                    <select id="newZone">
+                    <select id="newZone" data-testid="spaces-new-zone-select">
                         <option value="">Select a zone</option>
                         <option value="A">Zone A</option>
                         <option value="B">Zone B</option>
@@ -170,7 +170,7 @@
 
                 <div class="form-group">
                     <label>Allowed vehicle type *</label>
-                    <select id="newType">
+                    <select id="newType" data-testid="spaces-new-type-select">
                         <option value="Car">Car</option>
                         <option value="Motorcycle">Motorcycle</option>
                         <option value="Pickup">Pickup</option>
@@ -182,17 +182,17 @@
                     <label>Initial status</label>
                     <div class="radio-group">
                         <label class="radio-label">
-                            <input type="radio" name="initialStatus" value="available" checked> Available
+                            <input type="radio" name="initialStatus" value="available" checked data-testid="spaces-initial-available-radio"> Available
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="initialStatus" value="maintenance"> Under maintenance
+                            <input type="radio" name="initialStatus" value="maintenance" data-testid="spaces-initial-maintenance-radio"> Under maintenance
                         </label>
                     </div>
                 </div>
 
                 <div class="modal-buttons">
-                    <button class="btn-cancel" onclick="closeSpotModal()">Cancel</button>
-                    <button class="btn-primary" onclick="saveNewSpot()">Save Spot</button>
+                    <button class="btn-cancel" onclick="closeSpotModal()" data-testid="spaces-new-spot-cancel-btn">Cancel</button>
+                    <button class="btn-primary" onclick="saveNewSpot()" data-testid="spaces-new-spot-save-btn">Save Spot</button>
                 </div>
             </div>
         </div>
